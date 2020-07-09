@@ -14,7 +14,7 @@ public class Controller implements Initializable {
     public void handleButtonClick(ActionEvent actionEvent) {
         System.out.println("somthink happen ");
         button.setText("don't touch me");
-        message += "trlala";
+        message += "trlalaa";
         firstLabel.setText(message);
     }
 
