@@ -3,10 +3,8 @@ package org.snake;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -15,18 +13,20 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 public class App extends Application {
     // variable
     static int speed = 5;
-    static int foodcolor = 0;
-    static int width = 20;
-    static int height = 20;
+    static int foodColor = 0;
+    static int boardWidth = 20;
+    static int boardHeight = 20;
     static int foodX = 0;
     static int foodY = 0;
     static int cornersize = 25;
-    static List<Corner> snake = new ArrayList<>();
+    static List<Point> snake = new ArrayList<>();
     static Dir direction = Dir.left;
+
     static boolean gameOver = false;
     static Random rand = new Random();
 
@@ -34,11 +34,11 @@ public class App extends Application {
         left, right, up, down
     }
 
-    public static class Corner {
+    public static class Point {
         int x;
         int y;
 
-        public Corner(int x, int y) {
+        public Point(int x, int y) {
             this.x = x;
             this.y = y;
         }
@@ -50,7 +50,7 @@ public class App extends Application {
             newFood();
 
             VBox root = new VBox();
-            Canvas c = new Canvas(width * cornersize, height * cornersize);
+            Canvas c = new Canvas(boardWidth * cornersize, boardHeight * cornersize); //board size in pixel
             GraphicsContext gc = c.getGraphicsContext2D();
             root.getChildren().add(c);
 
@@ -58,13 +58,11 @@ public class App extends Application {
                 long lastTick = 0;
 
                 public void handle(long now) {
+
                     if (lastTick == 0) {
                         lastTick = now;
                         tick(gc);
-                        return;
-                    }
-
-                    if (now - lastTick > 1000000000 / speed) {
+                    } else if (now - lastTick > 1000000000 / speed) {
                         lastTick = now;
                         tick(gc);
                     }
@@ -72,7 +70,7 @@ public class App extends Application {
 
             }.start();
 
-            Scene scene = new Scene(root, width * cornersize, height * cornersize);
+            Scene scene = new Scene(root, boardWidth * cornersize, boardHeight * cornersize); // the same like Canvas
 
             // control
             scene.addEventFilter(KeyEvent.KEY_PRESSED, key -> {
@@ -92,9 +90,9 @@ public class App extends Application {
             });
 
             // add start snake parts
-            snake.add(new Corner(width / 2, height / 2));
-            snake.add(new Corner(width / 2, height / 2));
-            snake.add(new Corner(width / 2, height / 2));
+            snake.add(new Point(boardWidth / 2, boardHeight / 2));
+            snake.add(new Point(boardWidth / 2, boardHeight / 2));
+            snake.add(new Point(boardWidth / 2, boardHeight / 2));
             //If you do not want to use css style, you can just delete the next line.
 //            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setScene(scene);
@@ -128,7 +126,7 @@ public class App extends Application {
                 break;
             case down:
                 snake.get(0).y++;
-                if (snake.get(0).y > height) {
+                if (snake.get(0).y > boardHeight) {
                     gameOver = true;
                 }
                 break;
@@ -140,7 +138,7 @@ public class App extends Application {
                 break;
             case right:
                 snake.get(0).x++;
-                if (snake.get(0).x > width) {
+                if (snake.get(0).x > boardWidth) {
                     gameOver = true;
                 }
                 break;
@@ -149,7 +147,7 @@ public class App extends Application {
 
         // eat food
         if (foodX == snake.get(0).x && foodY == snake.get(0).y) {
-            snake.add(new Corner(-1, -1));
+            snake.add(new Point(-1, -1));
             newFood();
         }
 
@@ -163,7 +161,7 @@ public class App extends Application {
         // fill
         // background
         gc.setFill(Color.BLACK);
-        gc.fillRect(0, 0, width * cornersize, height * cornersize);
+        gc.fillRect(0, 0, boardWidth * cornersize, boardHeight * cornersize);
 
         // score
         gc.setFill(Color.WHITE);
@@ -173,7 +171,7 @@ public class App extends Application {
         // random foodcolor
         Color cc = Color.WHITE;
 
-        switch (foodcolor) {
+        switch (foodColor) {
             case 0:
                 cc = Color.PURPLE;
                 break;
@@ -194,11 +192,11 @@ public class App extends Application {
         gc.fillOval(foodX * cornersize, foodY * cornersize, cornersize, cornersize);
 
         // snake
-        for (Corner c : snake) {
+        for (Point c : snake) {
             gc.setFill(Color.LIGHTGREEN);
             gc.fillRect(c.x * cornersize, c.y * cornersize, cornersize - 1, cornersize - 1);
-            gc.setFill(Color.GREEN);
-            gc.fillRect(c.x * cornersize, c.y * cornersize, cornersize - 2, cornersize - 2);
+//            gc.setFill(Color.GREEN);
+//            gc.fillRect(c.x * cornersize, c.y * cornersize, cornersize - 2, cornersize - 2);
 
         }
 
@@ -206,16 +204,17 @@ public class App extends Application {
 
     // food
     public static void newFood() {
-        start: while (true) {
-            foodX = rand.nextInt(width);
-            foodY = rand.nextInt(height);
+        start:
+        while (true) {
+            foodX = rand.nextInt(boardWidth);
+            foodY = rand.nextInt(boardHeight);
 
-            for (Corner c : snake) {
+            for (Point c : snake) {
                 if (c.x == foodX && c.y == foodY) {
                     continue start;
                 }
             }
-            foodcolor = rand.nextInt(5);
+            foodColor = rand.nextInt(5);
             speed++;
             break;
 
