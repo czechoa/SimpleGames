@@ -6,6 +6,8 @@ import javafx.scene.paint.Color;
 
 public class Snake {
     private final int snakeItemSize = 10;
+    private final int boardWidth;
+    private final int boardHeight;
     ArrayList<Point> snake = new ArrayList<>();
     private Direction direction = Direction.LEFT;
     private int moveX;
@@ -28,6 +30,8 @@ public class Snake {
     }
 
     Snake(int boardWidth, int boardHeight) {
+        this.boardWidth = boardWidth;
+        this.boardHeight = boardHeight;
         snake.add(new Point(boardWidth / 2 - snakeItemSize, boardHeight / 2)); // head
         snake.add(new Point(boardWidth / 2, boardHeight / 2));
         snake.add(new Point(boardWidth / 2 + snakeItemSize, boardHeight / 2));
@@ -38,18 +42,12 @@ public class Snake {
     }
 
     public void tick(GraphicsContext graphics) {
-        chooseMove();
         for (int i = snake.size() - 1; i >= 0; i--) {
             Point point = snake.get(i);
-            if (i == 0) {
+            if (i == 0) { // head
+                chooseMove();
                 point.setxPosition(point.getxPosition() + moveX);
                 point.setyPosition(point.getyPosition() + moveY);
-                if (point.getyPosition() == snake.get(1).getyPosition()) {
-                    if (point.getxPosition() == snake.get(1).getxPosition()) {
-                        alive = false;
-                        return;
-                    }
-                }
 
             } else {
                 point.setxPosition(snake.get(i - 1).getxPosition());
@@ -58,10 +56,12 @@ public class Snake {
 
         }
         Point head = snake.get(0);
+        if(outOfBoard(head)){
+            alive = false;
+            return;
+        }
         Boolean notFirst = false;
         for (Point point : snake) {
-            System.out.println(" head " + head.getxPosition()+ " " + head.getyPosition());
-            System.out.println(" po head " +point.getxPosition() + " " +point.getyPosition());
             if (notFirst) {
                 if (collision(head, point)) {
                     alive = false;
@@ -76,6 +76,12 @@ public class Snake {
             graphics.fillRect(point.getxPosition() + 1, point.getyPosition() + 1, snakeItemSize - 2, snakeItemSize - 2);
 
         }
+    }
+
+    private boolean outOfBoard(Point head) {
+        int x = head.getxPosition();
+        int y = head.getyPosition();
+        return x < 0 || x > boardWidth || y < 0 || y > boardHeight;
     }
 
     private boolean collision(Point head, Point point) {
