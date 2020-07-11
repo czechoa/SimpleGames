@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
 
 public class RunLoop extends AnimationTimer {
     private Canvas canvas;
-    private final int speed;
+    private int speed = 10; // TODO
     private final GraphicsContext graphics;
     long  lastTick = 0;
     Snake snake;
@@ -15,8 +15,6 @@ public class RunLoop extends AnimationTimer {
 
     RunLoop(Canvas canvas, Snake snake){
         this.canvas = canvas;
-        this.speed = snake.getSpeed();
-
         graphics = canvas.getGraphicsContext2D();
         this.snake = snake;
 
@@ -33,7 +31,6 @@ public class RunLoop extends AnimationTimer {
 
         if (now - lastTick > 1000000000 / speed) {
             lastTick = now;
-            System.out.println("działam");
             tick();
         }
     }

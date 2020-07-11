@@ -5,9 +5,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Snake {
-    private final int speed = 10;
-    private final int score = 0;
-    private final int startLength = 3;
     private final int snakeItemSize = 10;
     ArrayList<Point> snake = new ArrayList<>();
     private Direction direction = Direction.LEFT;
@@ -26,11 +23,9 @@ public class Snake {
     }
 
     Snake(int boardWidth, int boardHeight) {
-        for (int i = 0; i < startLength; i++) {
             snake.add(new Point(boardWidth / 2, boardHeight / 2));
             snake.add(new Point(boardWidth / 2 - snakeItemSize, boardHeight / 2));
             snake.add(new Point(boardWidth / 2 + snakeItemSize, boardHeight / 2));
-        }
     }
 
     public void tick(GraphicsContext graphics) {
@@ -61,17 +56,14 @@ public class Snake {
         moveX = 0;
         moveY = 0;
         if (direction == Direction.LEFT) {
-            moveX -= speed;
+            moveX -= snakeItemSize;
         } else if (direction == Direction.RIGHT) {
-            moveX += speed;
+            moveX += snakeItemSize;
         } else if (direction == Direction.DOWN) {
-            moveY += speed;
+            moveY += snakeItemSize;
         } else if (direction == Direction.UP) {
-            moveY -= speed;
+            moveY -= snakeItemSize;
         }
     }
 
-    public int getSpeed() {
-        return speed;
-    }
 }
