@@ -38,5 +38,10 @@ public class RunLoop extends AnimationTimer {
         graphics.setFill(Color.BLACK);
         graphics.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
         snake.tick(graphics);
+        if(!snake.isAlive()){
+            System.out.println("is live "+ snake.isAlive());
+            System.out.println("died");
+            System.exit(1);
+        }
     }
 }

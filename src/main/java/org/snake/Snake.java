@@ -10,9 +10,14 @@ public class Snake {
     private Direction direction = Direction.LEFT;
     private int moveX;
     private int moveY;
+    private boolean alive = true;
 
     public void setDirection(Direction direction) {
         this.direction = direction;
+    }
+
+    public boolean isAlive() {
+        return alive;
     }
 
     public enum Direction {
@@ -23,9 +28,13 @@ public class Snake {
     }
 
     Snake(int boardWidth, int boardHeight) {
-            snake.add(new Point(boardWidth / 2, boardHeight / 2));
-            snake.add(new Point(boardWidth / 2 - snakeItemSize, boardHeight / 2));
-            snake.add(new Point(boardWidth / 2 + snakeItemSize, boardHeight / 2));
+        snake.add(new Point(boardWidth / 2 - snakeItemSize, boardHeight / 2)); // head
+        snake.add(new Point(boardWidth / 2, boardHeight / 2));
+        snake.add(new Point(boardWidth / 2 + snakeItemSize, boardHeight / 2));
+        snake.add(new Point(boardWidth / 2 + snakeItemSize*2, boardHeight / 2));
+        snake.add(new Point(boardWidth / 2 + snakeItemSize*3, boardHeight / 2));
+        snake.add(new Point(boardWidth / 2 + snakeItemSize*4, boardHeight / 2));
+        snake.add(new Point(boardWidth / 2 + snakeItemSize*5, boardHeight / 2));
     }
 
     public void tick(GraphicsContext graphics) {
@@ -35,22 +44,52 @@ public class Snake {
             if (i == 0) {
                 point.setxPosition(point.getxPosition() + moveX);
                 point.setyPosition(point.getyPosition() + moveY);
+                if (point.getyPosition() == snake.get(1).getyPosition()) {
+                    if (point.getxPosition() == snake.get(1).getxPosition()) {
+                        alive = false;
+                        return;
+                    }
+                }
+
             } else {
-                point.setxPosition(snake.get(i-1).getxPosition());
-                point.setyPosition(snake.get(i-1).getyPosition());
+                point.setxPosition(snake.get(i - 1).getxPosition());
+                point.setyPosition(snake.get(i - 1).getyPosition());
             }
 
         }
-        for(Point point : snake){
+        Point head = snake.get(0);
+        Boolean notFirst = false;
+        for (Point point : snake) {
+            System.out.println(" head " + head.getxPosition()+ " " + head.getyPosition());
+            System.out.println(" po head " +point.getxPosition() + " " +point.getyPosition());
+            if (notFirst) {
+                if (collision(head, point)) {
+                    alive = false;
+                    return;
+                }
+            }
+            notFirst = true;
+
             graphics.setFill(Color.WHITE);
             graphics.fillRect(point.getxPosition(), point.getyPosition(), snakeItemSize, snakeItemSize);
             graphics.setFill(Color.GRAY);
             graphics.fillRect(point.getxPosition() + 1, point.getyPosition() + 1, snakeItemSize - 2, snakeItemSize - 2);
+
         }
-
-
-
     }
+
+    private boolean collision(Point head, Point point) {
+
+        if (head.getxPosition() + snakeItemSize > point.getxPosition()) {
+            if (head.getxPosition() < point.getxPosition() + snakeItemSize) {
+                if (head.getyPosition() + snakeItemSize > point.getyPosition()) {
+                    return head.getyPosition() < point.getyPosition() + snakeItemSize;
+                }
+            }
+        }
+        return false;
+    }
+
 
     private void chooseMove() {
         moveX = 0;
