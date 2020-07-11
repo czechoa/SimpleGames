@@ -35,15 +35,25 @@ public class Snake {
 
     public void tick(GraphicsContext graphics) {
         chooseMove();
+        for (int i = snake.size() - 1; i >= 0; i--) {
+            Point point = snake.get(i);
+            if (i == 0) {
+                point.setxPosition(point.getxPosition() + moveX);
+                point.setyPosition(point.getyPosition() + moveY);
+            } else {
+                point.setxPosition(snake.get(i-1).getxPosition());
+                point.setyPosition(snake.get(i-1).getyPosition());
+            }
 
-        for (Point point : snake) {
+        }
+        for(Point point : snake){
             graphics.setFill(Color.WHITE);
-            point.setxPosition(point.getxPosition() + moveX);
-            point.setyPosition(point.getyPosition() + moveY);
             graphics.fillRect(point.getxPosition(), point.getyPosition(), snakeItemSize, snakeItemSize);
             graphics.setFill(Color.GRAY);
             graphics.fillRect(point.getxPosition() + 1, point.getyPosition() + 1, snakeItemSize - 2, snakeItemSize - 2);
         }
+
+
 
     }
 
@@ -52,11 +62,11 @@ public class Snake {
         moveY = 0;
         if (direction == Direction.LEFT) {
             moveX -= speed;
-        }else if (direction == Direction.RIGHT) {
+        } else if (direction == Direction.RIGHT) {
             moveX += speed;
-        }else if (direction == Direction.DOWN) {
+        } else if (direction == Direction.DOWN) {
             moveY += speed;
-        }else if (direction == Direction.UP) {
+        } else if (direction == Direction.UP) {
             moveY -= speed;
         }
     }
