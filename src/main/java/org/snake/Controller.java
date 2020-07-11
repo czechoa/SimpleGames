@@ -1,4 +1,4 @@
-package org.example;
+package org.snake;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +15,6 @@ public class Controller implements Initializable {
         System.out.println("somthink happen ");
         button.setText("don't touch me");
         message += "trlalaa";
-        firstLabel.setText(message);
     }
 
     @Override
