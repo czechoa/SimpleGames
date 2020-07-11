@@ -32,31 +32,23 @@ public class Snake {
     Snake(int boardWidth, int boardHeight) {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
+        createSnake();
+    }
+
+    private void createSnake() {
         snake.add(new Point(boardWidth / 2 - snakeItemSize, boardHeight / 2)); // head
         snake.add(new Point(boardWidth / 2, boardHeight / 2));
         snake.add(new Point(boardWidth / 2 + snakeItemSize, boardHeight / 2));
-        snake.add(new Point(boardWidth / 2 + snakeItemSize*2, boardHeight / 2));
-        snake.add(new Point(boardWidth / 2 + snakeItemSize*3, boardHeight / 2));
-        snake.add(new Point(boardWidth / 2 + snakeItemSize*4, boardHeight / 2));
-        snake.add(new Point(boardWidth / 2 + snakeItemSize*5, boardHeight / 2));
+        snake.add(new Point(boardWidth / 2 + snakeItemSize * 2, boardHeight / 2));
+        snake.add(new Point(boardWidth / 2 + snakeItemSize * 3, boardHeight / 2));
+        snake.add(new Point(boardWidth / 2 + snakeItemSize * 4, boardHeight / 2));
+        snake.add(new Point(boardWidth / 2 + snakeItemSize * 5, boardHeight / 2));
     }
 
     public void tick(GraphicsContext graphics) {
-        for (int i = snake.size() - 1; i >= 0; i--) {
-            Point point = snake.get(i);
-            if (i == 0) { // head
-                chooseMove();
-                point.setxPosition(point.getxPosition() + moveX);
-                point.setyPosition(point.getyPosition() + moveY);
-
-            } else {
-                point.setxPosition(snake.get(i - 1).getxPosition());
-                point.setyPosition(snake.get(i - 1).getyPosition());
-            }
-
-        }
+        setSnakeItemSizePosition();
         Point head = snake.get(0);
-        if(outOfBoard(head)){
+        if (outOfBoard(head)) {
             alive = false;
             return;
         }
@@ -69,11 +61,29 @@ public class Snake {
                 }
             }
             notFirst = true;
+            paint(graphics,point);
+        }
+    }
 
-            graphics.setFill(Color.WHITE);
-            graphics.fillRect(point.getxPosition(), point.getyPosition(), snakeItemSize, snakeItemSize);
-            graphics.setFill(Color.GRAY);
-            graphics.fillRect(point.getxPosition() + 1, point.getyPosition() + 1, snakeItemSize - 2, snakeItemSize - 2);
+    public void paint(GraphicsContext graphics, Point point) {
+        graphics.setFill(Color.WHITE);
+        graphics.fillRect(point.getxPosition(), point.getyPosition(), snakeItemSize, snakeItemSize);
+        graphics.setFill(Color.GRAY);
+        graphics.fillRect(point.getxPosition() + 1, point.getyPosition() + 1, snakeItemSize - 2, snakeItemSize - 2);
+    }
+
+    private void setSnakeItemSizePosition() {
+        for (int i = snake.size() - 1; i >= 0; i--) {
+            Point point = snake.get(i);
+            if (i == 0) { // head
+                chooseMove();
+                point.setxPosition(point.getxPosition() + moveX);
+                point.setyPosition(point.getyPosition() + moveY);
+
+            } else {
+                point.setxPosition(snake.get(i - 1).getxPosition());
+                point.setyPosition(snake.get(i - 1).getyPosition());
+            }
 
         }
     }
@@ -95,7 +105,6 @@ public class Snake {
         }
         return false;
     }
-
 
     private void chooseMove() {
         moveX = 0;
