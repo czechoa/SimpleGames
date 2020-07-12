@@ -9,6 +9,7 @@ public class Snake {
     private final int boardWidth;
     private final int boardHeight;
     ArrayList<Point> snake = new ArrayList<>();
+    Point fruit;
     private Direction direction = Direction.LEFT;
     private int moveX;
     private int moveY;
@@ -28,17 +29,24 @@ public class Snake {
         snake.add(new Point(boardWidth / 2 + snakeItemSize * 3, boardHeight / 2));
         snake.add(new Point(boardWidth / 2 + snakeItemSize * 4, boardHeight / 2));
         snake.add(new Point(boardWidth / 2 + snakeItemSize * 5, boardHeight / 2));
+        fruit = new Point(100,100);
     }
 
     public void tick(GraphicsContext graphics) {
         setSnakeItemSizePosition();
         Point head = snake.get(0);
+
         if (outOfBoard(head)) {
             alive = false;
             return;
         }
         Boolean notFirst = false;
         for (Point point : snake) {
+            if(point.getxPosition() == fruit.getxPosition()){
+                if(point.getyPosition() == fruit.getyPosition()){
+                    System.out.println("eat");
+                }
+            }
             if (notFirst) {
                 if (collision(head, point)) {
                     alive = false;
@@ -46,15 +54,16 @@ public class Snake {
                 }
             }
             notFirst = true;
-            paint(graphics, point);
+            point.paint(graphics);
         }
+        paint(graphics);
+
     }
 
-    public void paint(GraphicsContext graphics, Point point) {
-        graphics.setFill(Color.WHITE);
-        graphics.fillRect(point.getxPosition(), point.getyPosition(), snakeItemSize, snakeItemSize);
-        graphics.setFill(Color.GRAY);
-        graphics.fillRect(point.getxPosition() + 1, point.getyPosition() + 1, snakeItemSize - 2, snakeItemSize - 2);
+    public void paint(GraphicsContext graphics) {
+        graphics.setFill(Color.YELLOW);
+        graphics.fillOval(fruit.getxPosition(), fruit.getyPosition() + 1, snakeItemSize - 2, snakeItemSize - 2);
+
     }
 
     private void setSnakeItemSizePosition() {

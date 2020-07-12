@@ -4,6 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class RunLoop extends AnimationTimer {
     private Canvas canvas;
@@ -17,7 +18,6 @@ public class RunLoop extends AnimationTimer {
         this.canvas = canvas;
         graphics = canvas.getGraphicsContext2D();
         this.snake = snake;
-
 
     }
 
@@ -37,11 +37,13 @@ public class RunLoop extends AnimationTimer {
     private void tick(){
         graphics.setFill(Color.BLACK);
         graphics.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
+
         snake.tick(graphics);
         if(!snake.isAlive()){
-            System.out.println("is live "+ snake.isAlive());
-            System.out.println("died");
-            System.exit(1);
+            graphics.setFill(Color.RED);
+            graphics.setFont(new Font("", 50));
+            graphics.fillText("GAME OVER", 100, 250);
+            stop();
         }
     }
 }
