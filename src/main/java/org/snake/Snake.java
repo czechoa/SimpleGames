@@ -14,21 +14,6 @@ public class Snake {
     private int moveY;
     private boolean alive = true;
 
-    public void setDirection(Direction direction) {
-        this.direction = direction;
-    }
-
-    public boolean isAlive() {
-        return alive;
-    }
-
-    public enum Direction {
-        UP,
-        RIGHT,
-        DOWN,
-        LEFT
-    }
-
     Snake(int boardWidth, int boardHeight) {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
@@ -61,7 +46,7 @@ public class Snake {
                 }
             }
             notFirst = true;
-            paint(graphics,point);
+            paint(graphics, point);
         }
     }
 
@@ -118,6 +103,14 @@ public class Snake {
         } else if (direction == Direction.UP) {
             moveY -= snakeItemSize;
         }
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    public boolean isAlive() {
+        return alive;
     }
 
 }

@@ -30,16 +30,16 @@ public class App extends Application {
         Scene scene = new Scene(hBox,boardXSize,boardYSize);
         scene.addEventFilter(KeyEvent.KEY_PRESSED, key -> {
             if (key.getCode() == KeyCode.W) {
-                snake.setDirection(Snake.Direction.UP);
+                snake.setDirection(Direction.UP);
             }
             if (key.getCode() == KeyCode.A) {
-                snake.setDirection(Snake.Direction.LEFT);
+                snake.setDirection(Direction.LEFT);
             }
             if (key.getCode() == KeyCode.S) {
-                snake.setDirection(Snake.Direction.DOWN);
+                snake.setDirection(Direction.DOWN);
             }
             if (key.getCode() == KeyCode.D) {
-                snake.setDirection(Snake.Direction.RIGHT);
+                snake.setDirection(Direction.RIGHT);
             }
 
         });
