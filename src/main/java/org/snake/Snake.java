@@ -1,6 +1,7 @@
 package org.snake;
 
 import java.util.ArrayList;
+import java.util.Random;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -8,59 +9,68 @@ public class Snake {
     private final int snakeItemSize = 10;
     private final int boardWidth;
     private final int boardHeight;
-    ArrayList<Point> snake = new ArrayList<>();
-    Point fruit;
+    ArrayList<SnakePart> snake = new ArrayList<>();
+    SnakePart fruit;
     private Direction direction = Direction.LEFT;
     private int moveX;
     private int moveY;
     private boolean alive = true;
+    Random random = new Random();
 
     Snake(int boardWidth, int boardHeight) {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         createSnake();
+
     }
 
     private void createSnake() {
-        snake.add(new Point(boardWidth / 2 - snakeItemSize, boardHeight / 2)); // head
-        snake.add(new Point(boardWidth / 2, boardHeight / 2));
-        snake.add(new Point(boardWidth / 2 + snakeItemSize, boardHeight / 2));
-        snake.add(new Point(boardWidth / 2 + snakeItemSize * 2, boardHeight / 2));
-        snake.add(new Point(boardWidth / 2 + snakeItemSize * 3, boardHeight / 2));
-        snake.add(new Point(boardWidth / 2 + snakeItemSize * 4, boardHeight / 2));
-        snake.add(new Point(boardWidth / 2 + snakeItemSize * 5, boardHeight / 2));
-        fruit = new Point(100,100);
+        snake.add(new SnakePart(boardWidth / 2 - snakeItemSize, boardHeight / 2)); // head
+        snake.add(new SnakePart(boardWidth / 2, boardHeight / 2));
+        snake.add(new SnakePart(boardWidth / 2 + snakeItemSize, boardHeight / 2));
+        snake.add(new SnakePart(boardWidth / 2 + snakeItemSize * 2, boardHeight / 2));
+        snake.add(new SnakePart(boardWidth / 2 + snakeItemSize * 3, boardHeight / 2));
+        snake.add(new SnakePart(boardWidth / 2 + snakeItemSize * 4, boardHeight / 2));
+        snake.add(new SnakePart(boardWidth / 2 + snakeItemSize * 5, boardHeight / 2));
+        fruit = new SnakePart(100,100);
     }
 
     public void tick(GraphicsContext graphics) {
         setSnakeItemSizePosition();
-        Point head = snake.get(0);
+        SnakePart head = snake.get(0);
 
         if (outOfBoard(head)) {
             alive = false;
             return;
         }
+        if(collision(head,fruit)){
+            do {
+                int x = random.nextInt(boardWidth);
+                int y = random.nextInt(boardHeight);
+                fruit = new SnakePart(x,y);
+            }while (collision(head,fruit));
+            int lastSnakeItem = snake.size() - 1;
+            int x = snake.get(lastSnakeItem).getxPosition();
+            int y = snake.get(lastSnakeItem).getyPosition();
+            snake.add(new SnakePart(x,y));
+        }
         Boolean notFirst = false;
-        for (Point point : snake) {
-            if(point.getxPosition() == fruit.getxPosition()){
-                if(point.getyPosition() == fruit.getyPosition()){
-                    System.out.println("eat");
-                }
-            }
+        for (SnakePart point : snake) {
             if (notFirst) {
                 if (collision(head, point)) {
                     alive = false;
                     return;
                 }
+            }else {
+                notFirst = true;
             }
-            notFirst = true;
             point.paint(graphics);
         }
-        paint(graphics);
+        paintFruit(graphics);
 
     }
 
-    public void paint(GraphicsContext graphics) {
+    public void paintFruit(GraphicsContext graphics) {
         graphics.setFill(Color.YELLOW);
         graphics.fillOval(fruit.getxPosition(), fruit.getyPosition() + 1, snakeItemSize - 2, snakeItemSize - 2);
 
@@ -68,7 +78,7 @@ public class Snake {
 
     private void setSnakeItemSizePosition() {
         for (int i = snake.size() - 1; i >= 0; i--) {
-            Point point = snake.get(i);
+            SnakePart point = snake.get(i);
             if (i == 0) { // head
                 chooseMove();
                 point.setxPosition(point.getxPosition() + moveX);
@@ -82,13 +92,13 @@ public class Snake {
         }
     }
 
-    private boolean outOfBoard(Point head) {
+    private boolean outOfBoard(SnakePart head) {
         int x = head.getxPosition();
         int y = head.getyPosition();
         return x < 0 || x > boardWidth || y < 0 || y > boardHeight;
     }
 
-    private boolean collision(Point head, Point point) {
+    private boolean collision(SnakePart head, SnakePart point) {
 
         if (head.getxPosition() + snakeItemSize > point.getxPosition()) {
             if (head.getxPosition() < point.getxPosition() + snakeItemSize) {
@@ -121,5 +131,6 @@ public class Snake {
     public boolean isAlive() {
         return alive;
     }
+
 
 }
