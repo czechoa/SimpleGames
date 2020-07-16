@@ -8,7 +8,7 @@ public class Snake {
     private final int snakeItemSize = 10;
     private final int boardWidth;
     private final int boardHeight;
-    ArrayList<SnakePart> snake = new ArrayList<>();
+    private final ArrayList<SnakePart> snake = new ArrayList<>();
     Fruit fruit;
     private Direction direction = Direction.LEFT;
     private int moveX;
@@ -118,5 +118,8 @@ public class Snake {
 
     public boolean isAlive() {
         return alive;
+    }
+    public int getSnakeSize(){
+        return snake.size();
     }
 }

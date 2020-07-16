@@ -8,7 +8,7 @@ import javafx.scene.text.Font;
 
 public class RunLoop extends AnimationTimer {
     private Canvas canvas;
-    private int speed = 10; // TODO
+    private int speed;
     private final GraphicsContext graphics;
     long  lastTick = 0;
     Snake snake;
@@ -18,6 +18,7 @@ public class RunLoop extends AnimationTimer {
         this.canvas = canvas;
         graphics = canvas.getGraphicsContext2D();
         this.snake = snake;
+        speed = snake.getSnakeSize()*3;
 
     }
 
@@ -32,6 +33,7 @@ public class RunLoop extends AnimationTimer {
         if (now - lastTick > 1000000000 / speed) {
             lastTick = now;
             tick();
+            speed = snake.getSnakeSize();
         }
     }
     private void tick(){
@@ -42,7 +44,7 @@ public class RunLoop extends AnimationTimer {
         if(!snake.isAlive()){
             graphics.setFill(Color.RED);
             graphics.setFont(new Font("", 50));
-            graphics.fillText("GAME OVER", 100, 250);
+            graphics.fillText("GAME OVER \n Score "+ snake.getSnakeSize(), 100, 250);
             stop();
         }
     }

@@ -1,7 +1,6 @@
 package org.snake;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
 public abstract class Point {
     protected int xPosition;

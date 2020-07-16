@@ -1,7 +1,6 @@
 package org.snake;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.effect.Light;
 import javafx.scene.paint.Color;
 
 public class SnakePart extends Point {
