@@ -6,6 +6,8 @@ import javafx.scene.paint.Color;
 public abstract class Point {
     protected int xPosition;
     protected int yPosition;
+    protected int size = 10;
+
 
     Point(int xPosition,int yPosition){
         this.xPosition = xPosition;

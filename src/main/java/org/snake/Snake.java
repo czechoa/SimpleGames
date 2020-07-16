@@ -10,7 +10,7 @@ public class Snake {
     private final int boardWidth;
     private final int boardHeight;
     ArrayList<SnakePart> snake = new ArrayList<>();
-    SnakePart fruit;
+    Fruit fruit;
     private Direction direction = Direction.LEFT;
     private int moveX;
     private int moveY;
@@ -32,7 +32,7 @@ public class Snake {
         snake.add(new SnakePart(boardWidth / 2 + snakeItemSize * 3, boardHeight / 2));
         snake.add(new SnakePart(boardWidth / 2 + snakeItemSize * 4, boardHeight / 2));
         snake.add(new SnakePart(boardWidth / 2 + snakeItemSize * 5, boardHeight / 2));
-        fruit = new SnakePart(100,100);
+        fruit = new Fruit(100,100);
     }
 
     public void tick(GraphicsContext graphics) {
@@ -44,17 +44,13 @@ public class Snake {
             return;
         }
         if(collision(head,fruit)){
-            do {
-                int x = random.nextInt(boardWidth);
-                int y = random.nextInt(boardHeight);
-                fruit = new SnakePart(x,y);
-            }while (collision(head,fruit));
+            fruit = fruit.makeNewFruit(boardWidth,boardHeight);
             int lastSnakeItem = snake.size() - 1;
-            int x = snake.get(lastSnakeItem).getxPosition();
-            int y = snake.get(lastSnakeItem).getyPosition();
-            snake.add(new SnakePart(x,y));
+            int xPosition = snake.get(lastSnakeItem).getxPosition();
+            int yPosition = snake.get(lastSnakeItem).getyPosition();
+            snake.add(new SnakePart(xPosition,yPosition));
         }
-        Boolean notFirst = false;
+        boolean notFirst = false;
         for (SnakePart point : snake) {
             if (notFirst) {
                 if (collision(head, point)) {
@@ -66,15 +62,9 @@ public class Snake {
             }
             point.paint(graphics);
         }
-        paintFruit(graphics);
-
+        fruit.paint(graphics);
     }
 
-    public void paintFruit(GraphicsContext graphics) {
-        graphics.setFill(Color.YELLOW);
-        graphics.fillOval(fruit.getxPosition(), fruit.getyPosition() + 1, snakeItemSize - 2, snakeItemSize - 2);
-
-    }
 
     private void setSnakeItemSizePosition() {
         for (int i = snake.size() - 1; i >= 0; i--) {
@@ -98,7 +88,7 @@ public class Snake {
         return x < 0 || x > boardWidth || y < 0 || y > boardHeight;
     }
 
-    private boolean collision(SnakePart head, SnakePart point) {
+    private boolean collision(Point head, Point point) {
 
         if (head.getxPosition() + snakeItemSize > point.getxPosition()) {
             if (head.getxPosition() < point.getxPosition() + snakeItemSize) {
