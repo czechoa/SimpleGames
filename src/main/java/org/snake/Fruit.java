@@ -19,8 +19,8 @@ public class Fruit extends Point {
     }
 
     public Fruit makeNewFruit(int boardWidth,int boardHeight){
-        int x = random.nextInt(boardWidth);
-        int y = random.nextInt(boardHeight);
+        int x = random.nextInt(boardWidth - size);
+        int y = random.nextInt(boardHeight - size);
         return new Fruit(x,y);
     }
 }

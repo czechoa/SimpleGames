@@ -3,7 +3,6 @@ package org.snake;
 import java.util.ArrayList;
 import java.util.Random;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
 public class Snake {
     private final int snakeItemSize = 10;
@@ -15,7 +14,6 @@ public class Snake {
     private int moveX;
     private int moveY;
     private boolean alive = true;
-    Random random = new Random();
 
     Snake(int boardWidth, int boardHeight) {
         this.boardWidth = boardWidth;
@@ -121,6 +119,4 @@ public class Snake {
     public boolean isAlive() {
         return alive;
     }
-
-
 }
