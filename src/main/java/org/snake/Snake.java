@@ -1,6 +1,7 @@
 package org.snake;
 
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Snake {
@@ -9,7 +10,14 @@ public class Snake {
     private final int snakeItemSize;
     private final int boardWidth;
     private final int boardHeight;
-    private final ArrayList<SnakePart> snake = new ArrayList<>();
+    private ObservableList<SnakePart> snake = FXCollections.observableArrayList();
+
+//    snake.addListener((
+//    ListChangeListener.Change<? extends SnakePart> c)->
+//    {
+//        c.next();
+//        updateAnnotation((List<MyAnno>) c.getAddedSubList(), xyPlot);
+//    })
     Fruit fruit;
     private Direction direction = Direction.LEFT;
     private int moveX;
@@ -152,5 +160,9 @@ public class Snake {
 
     public int getSnakeSize() {
         return snake.size();
+    }
+
+    public int getLevel() {
+        return snake.size() - amountSnakePartInStart + 1;
     }
 }
