@@ -6,28 +6,25 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class Snake {
 
-    private final int amountSnakePartInStart = 10; // to 33
-    private final int snakeItemSize;
+    private int amountSnakePartInStart;
+    private final int snakePartSize;
     private final int boardWidth;
     private final int boardHeight;
+    private final int fruitSize;
     private ObservableList<SnakePart> snake = FXCollections.observableArrayList();
 
-//    snake.addListener((
-//    ListChangeListener.Change<? extends SnakePart> c)->
-//    {
-//        c.next();
-//        updateAnnotation((List<MyAnno>) c.getAddedSubList(), xyPlot);
-//    })
     Fruit fruit;
     private Direction direction = Direction.LEFT;
     private int moveX;
     private int moveY;
     private boolean alive = true;
 
-    Snake(int boardWidth, int boardHeight) {
+    Snake(int boardWidth, int boardHeight,int snakePartSize,int amountSnakePartInStart,int fruitSize) {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
-        snakeItemSize = SnakePart.getSizeSnakePart();
+        this.snakePartSize = snakePartSize;
+        this.amountSnakePartInStart = amountSnakePartInStart;
+        this.fruitSize = fruitSize;
         createSnake();
     }
 
@@ -36,18 +33,18 @@ public class Snake {
             SnakePart snakePart;
             try {
                 SnakePart snakePartLast = snake.get(i - 1);
-                snakePart = new SnakePart(snakePartLast.xPosition + snakeItemSize, snakePartLast.yPosition, snakeItemSize);//right
+                snakePart = new SnakePart(snakePartLast.xPosition + snakePartSize, snakePartLast.yPosition, snakePartSize);//right
                 if (outOfBoard(snakePart) || collisionWithAllPart(snakePart)) {
-                    snakePart = new SnakePart(snakePartLast.xPosition, snakePartLast.yPosition + snakeItemSize, snakeItemSize);//down
+                    snakePart = new SnakePart(snakePartLast.xPosition, snakePartLast.yPosition + snakePartSize, snakePartSize);//down
                     if (outOfBoard(snakePart) || collisionWithAllPart(snakePart)) {
-                        snakePart = new SnakePart(snakePartLast.xPosition - snakeItemSize, snakePartLast.yPosition, snakeItemSize);//left
+                        snakePart = new SnakePart(snakePartLast.xPosition - snakePartSize, snakePartLast.yPosition, snakePartSize);//left
                         if (outOfBoard(snakePart) || collisionWithAllPart(snakePart)) {
-                            snakePart = new SnakePart(snakePartLast.xPosition, snakePartLast.yPosition - snakeItemSize, snakeItemSize);//up
+                            snakePart = new SnakePart(snakePartLast.xPosition, snakePartLast.yPosition - snakePartSize, snakePartSize);//up
                         }
                     }
                 }
             } catch (IndexOutOfBoundsException e) {
-                snakePart = new SnakePart(boardWidth / 2, boardHeight / 2, snakeItemSize); // head
+                snakePart = new SnakePart(boardWidth / 2, boardHeight / 2, snakePartSize); // head
 
             }
             snake.add(snakePart);
@@ -78,7 +75,7 @@ public class Snake {
             int lastSnakeItem = snake.size() - 1;
             int xPosition = snake.get(lastSnakeItem).getxPosition();
             int yPosition = snake.get(lastSnakeItem).getyPosition();
-            snake.add(new SnakePart(xPosition, yPosition, snakeItemSize));
+            snake.add(new SnakePart(xPosition, yPosition, snakePartSize));
         }
         boolean notFirst = false;
         for (SnakePart point : snake) {
@@ -96,8 +93,9 @@ public class Snake {
     }
 
     private void createNewFruit() {
+        System.out.println(fruitSize);
         do {
-            fruit = Fruit.makeNewFruit(boardWidth, boardHeight);
+            fruit = Fruit.makeNewFruit(boardWidth, boardHeight,fruitSize);
         } while (collisionWithAllPart(fruit));
     }
 
@@ -121,7 +119,7 @@ public class Snake {
     private boolean outOfBoard(SnakePart head) {
         int x = head.getxPosition();
         int y = head.getyPosition();
-        return x < 0 || (x + snakeItemSize) > boardWidth || y < 0 || (y + snakeItemSize) > boardHeight;
+        return x < 0 || (x + snakePartSize) > boardWidth || y < 0 || (y + snakePartSize) > boardHeight;
     }
 
     private boolean collision(Point head, Point point) {
@@ -140,13 +138,13 @@ public class Snake {
         moveX = 0;
         moveY = 0;
         if (direction == Direction.LEFT) {
-            moveX -= snakeItemSize;
+            moveX -= snakePartSize;
         } else if (direction == Direction.RIGHT) {
-            moveX += snakeItemSize;
+            moveX += snakePartSize;
         } else if (direction == Direction.DOWN) {
-            moveY += snakeItemSize;
+            moveY += snakePartSize;
         } else if (direction == Direction.UP) {
-            moveY -= snakeItemSize;
+            moveY -= snakePartSize;
         }
     }
 
@@ -156,10 +154,6 @@ public class Snake {
 
     public boolean isAlive() {
         return alive;
-    }
-
-    public int getSnakeSize() {
-        return snake.size();
     }
 
     public int getLevel() {

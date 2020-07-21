@@ -2,6 +2,7 @@ package org.snake;
 
 
 import java.util.List;
+import java.util.Objects;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -17,20 +18,23 @@ public class App extends Application {
     private int boardYSize;
     private int snakePartSize;
     private int snakeAmountPart;
+    private int fruitSize;
     @Override
     public void start(Stage stage) {
 
-        List<String> list = Reader.readerFile(getClass().getClassLoader().getResource("dataToSnake").getFile());
+        List<String> list = Reader.readerFile(Objects.requireNonNull(getClass().getClassLoader().getResource("dataToSnake")).getFile());
+
         boardXSize = getValueFromList(list,0);
         boardYSize = getValueFromList(list,1);
         snakePartSize = getValueFromList(list,2);
         snakeAmountPart = getValueFromList(list,3);
+        fruitSize = getValueFromList(list,4);
 
         HBox hBox = new HBox();
         Canvas canvas = new Canvas(boardXSize, boardYSize);
 
         hBox.getChildren().add(canvas);
-        Snake snake = new Snake(boardXSize, boardYSize);
+        Snake snake = new Snake(boardXSize, boardYSize,snakePartSize,snakeAmountPart,fruitSize);
         RunLoop runLoop = new RunLoop(canvas, snake);
         runLoop.start();
 
@@ -56,8 +60,7 @@ public class App extends Application {
     }
     private int getValueFromList(List<String> list,int numberIndex){
         String[] oneLine = list.get(numberIndex).split("\\s+");
-        int value = Integer.parseInt(oneLine[1]);
-        return value;
+        return Integer.parseInt(oneLine[1]);
     }
 
 

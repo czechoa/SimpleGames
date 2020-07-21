@@ -4,15 +4,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class SnakePart extends Point {
-    private static int size = 50;
 
     SnakePart(int xPosition, int yPosition,int size) {
 
         super(xPosition, yPosition,size);
-    }
-
-    public static int getSizeSnakePart() {
-        return size;
     }
 
     @Override
