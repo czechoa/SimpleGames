@@ -35,6 +35,7 @@ public class RunLoop extends AnimationTimer {
             tick();
             speed = snake.getSnakeSize();
         }
+        stop();
     }
     private void tick(){
         graphics.setFill(Color.BLACK);

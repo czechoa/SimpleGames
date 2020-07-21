@@ -4,9 +4,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class SnakePart extends Point {
+    private int size;
 
-    SnakePart(int xPosition, int yPosition) {
+    SnakePart(int xPosition, int yPosition,int size) {
+
         super(xPosition, yPosition);
+        this.size = size;
     }
 
     @Override
