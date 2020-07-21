@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 
 public class Fruit extends Point {
 
-    private Random random = new Random();
+    private static Random random = new Random();
 
     Fruit(int xPosition, int yPosition) {
         super(xPosition, yPosition);
@@ -18,7 +18,7 @@ public class Fruit extends Point {
         graphics.fillOval(xPosition,yPosition, size, size);
     }
 
-    public Fruit makeNewFruit(int boardWidth,int boardHeight){
+    public static Fruit makeNewFruit(int boardWidth,int boardHeight){
         int x = random.nextInt(boardWidth - size);
         int y = random.nextInt(boardHeight - size);
         return new Fruit(x,y);

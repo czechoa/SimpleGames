@@ -44,11 +44,12 @@ public class Snake {
 
             }
             snake.add(snakePart);
-        }
-        fruit = new Fruit(1, 1);
+        }do {
+            fruit = Fruit.makeNewFruit(boardWidth,boardHeight);
+        }while (collisionWithAllPart(fruit));
     }
 
-    private boolean collisionWithAllPart(SnakePart givenSnakePart) {
+    private boolean collisionWithAllPart(Point givenSnakePart) {
         for(SnakePart snakePart : snake){
             if(collision(givenSnakePart,snakePart)){
                 return true;

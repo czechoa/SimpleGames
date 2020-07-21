@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 public abstract class Point {
     protected int xPosition;
     protected int yPosition;
-    protected int size = 10;
+    protected static int size = 10;
 
 
     Point(int xPosition,int yPosition){
