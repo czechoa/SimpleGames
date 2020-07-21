@@ -7,9 +7,10 @@ import javafx.scene.paint.Color;
 public class Fruit extends Point {
 
     private static Random random = new Random();
+    private static int size = 100;
 
     Fruit(int xPosition, int yPosition) {
-        super(xPosition, yPosition);
+        super(xPosition, yPosition,size);
     }
 
     @Override

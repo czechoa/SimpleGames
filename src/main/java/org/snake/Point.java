@@ -5,12 +5,17 @@ import javafx.scene.canvas.GraphicsContext;
 public abstract class Point {
     protected int xPosition;
     protected int yPosition;
-    protected static int size = 10;
+    protected int size;
 
 
-    Point(int xPosition,int yPosition){
+    Point(int xPosition,int yPosition,int size){
         this.xPosition = xPosition;
         this.yPosition = yPosition;
+        this.size = size;
+    }
+
+    public int getSize() {
+        return size;
     }
 
     public int getxPosition() {

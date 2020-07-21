@@ -18,7 +18,7 @@ public class RunLoop extends AnimationTimer {
         this.canvas = canvas;
         graphics = canvas.getGraphicsContext2D();
         this.snake = snake;
-        speed = snake.getSnakeSize()*3;
+        speed = 1;
 
     }
 
@@ -33,9 +33,8 @@ public class RunLoop extends AnimationTimer {
         if (now - lastTick > 1000000000 / speed) {
             lastTick = now;
             tick();
-            speed = snake.getSnakeSize();
+            speed = snake.getSnakeSize()/10;
         }
-        stop();
     }
     private void tick(){
         graphics.setFill(Color.BLACK);
