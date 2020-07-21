@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class RunLoop extends AnimationTimer {
+
     private Canvas canvas;
     private int speed = 3;
     private final GraphicsContext graphics;
@@ -53,4 +54,5 @@ public class RunLoop extends AnimationTimer {
     public void setSpeed(int speed) {
         this.speed = speed;
     }
+
 }
