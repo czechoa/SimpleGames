@@ -5,8 +5,8 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class Snake {
 
-    private final int snakeStartLength = 600;
-    private final int amountSnakePartInStart = 10;
+    private final int snakeStartLength = 800;
+    private final int amountSnakePartInStart = 10; // to 33
     private final int snakeItemSize;
     private final int boardWidth;
     private final int boardHeight;
@@ -25,61 +25,36 @@ public class Snake {
     }
 
     private final void createSnake() {
-//        int tmpX = 1;
-//        int tmpY = 0;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < amountSnakePartInStart; i++) {
             SnakePart snakePart;
             try {
                 SnakePart snakePartLast = snake.get(i - 1);
                 snakePart = new SnakePart(snakePartLast.xPosition + snakeItemSize, snakePartLast.yPosition, snakeItemSize);//right
-                if (outOfBoard(snakePart) || collision(snakePart, snakePartLast)) {
+                if (outOfBoard(snakePart) || collisionWithAllPart(snakePart)) {
                     snakePart = new SnakePart(snakePartLast.xPosition, snakePartLast.yPosition + snakeItemSize, snakeItemSize);//down
-                    if (outOfBoard(snakePart) || collision(snakePart, snakePartLast)) {
+                    if (outOfBoard(snakePart) || collisionWithAllPart(snakePart)) {
                         snakePart = new SnakePart(snakePartLast.xPosition - snakeItemSize, snakePartLast.yPosition, snakeItemSize);//left
-                        if (outOfBoard(snakePart) || collision(snakePart, snakePartLast)) {
+                        if (outOfBoard(snakePart) || collisionWithAllPart(snakePart)) {
                             snakePart = new SnakePart(snakePartLast.xPosition, snakePartLast.yPosition - snakeItemSize, snakeItemSize);//up
                         }
                     }
                 }
             } catch (IndexOutOfBoundsException e) {
-                snakePart = new SnakePart(boardWidth / 2, boardHeight / 2, snakeItemSize); // head
+                snakePart = new SnakePart(boardWidth / 2 , boardHeight / 2, snakeItemSize); // head
+
             }
             snake.add(snakePart);
         }
-            //            try {
-//                if (outOfBoard(snakePart) || collision(snakePart, snake.get(i -1 ))){
-//                    System.out.print(" doł ");
-//                    tmpX--;
-//                    tmpY++;
-//                    snakePart = new SnakePart(boardWidth / 2 + snakeItemSize * tmpX, boardHeight / 2 + snakeItemSize * tmpY, snakeItemSize);
-//                    if (outOfBoard(snakePart) || collision(snakePart, snake.get(snake.size() - 1))) {
-//                        System.out.print(" lewo ");
-//                        tmpX--;
-//                        tmpY--;
-//                        snakePart = new SnakePart(boardWidth / 2 + snakeItemSize * tmpX, boardHeight / 2 + snakeItemSize * tmpY, snakeItemSize);
-//                        if (outOfBoard(snakePart) || collision(snakePart, snake.get(snake.size() - 1)) ) {
-//                            System.out.print(" góra ");
-//                            tmpX++;
-//                            tmpY--;
-//                            snakePart = new SnakePart(boardWidth / 2 + snakeItemSize * tmpX, boardHeight / 2 + snakeItemSize * tmpY, snakeItemSize);
-//                        }
-//                    }
-//                }
-//            } catch (IndexOutOfBoundsException e){
-//
-//            }
-//            System.out.print("\n");
-//            System.out.println("tmpX = " + tmpX + " tmpY = " + tmpY + "\t x = " + snakePart.xPosition + "y = " + snakePart.yPosition);
-//            snake.add(snakePart);
-//        }
-//        snake.add(new SnakePart(boardWidth / 2, boardHeight / 2));
-//        snake.add(new SnakePart(boardWidth / 2 + snakeItemSize, boardHeight / 2));
-//        snake.add(new SnakePart(boardWidth / 2 + snakeItemSize * 2, boardHeight / 2));
-//        snake.add(new SnakePart(boardWidth / 2 + snakeItemSize * 3, boardHeight / 2));
-//        snake.add(new SnakePart(boardWidth / 2 + snakeItemSize * 4, boardHeight / 2));
-//        snake.add(new SnakePart(boardWidth / 2 + snakeItemSize * 5, boardHeight / 2));
-
         fruit = new Fruit(1, 1);
+    }
+
+    private boolean collisionWithAllPart(SnakePart givenSnakePart) {
+        for(SnakePart snakePart : snake){
+            if(collision(givenSnakePart,snakePart)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void tick(GraphicsContext graphics) {
@@ -136,11 +111,15 @@ public class Snake {
     }
 
     private boolean collision(Point head, Point point) {
-
         if (head.getxPosition() + snakeItemSize > point.getxPosition()) {
             if (head.getxPosition() < point.getxPosition() + snakeItemSize) {
                 if (head.getyPosition() + snakeItemSize > point.getyPosition()) {
-                    return head.getyPosition() < point.getyPosition() + snakeItemSize;
+                    if(head.getyPosition() < point.getyPosition() + snakeItemSize){
+                        System.out.println("head x "+ head.getxPosition() + " y" + head.getyPosition() );
+                        System.out.println("Point x "+ head.getxPosition() + " y" + head.getyPosition() );
+                        return true;
+                    }
+
                 }
             }
         }
