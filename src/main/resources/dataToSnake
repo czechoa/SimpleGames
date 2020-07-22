@@ -1,0 +1,5 @@
+BoardWidth 500
+BoardHeight 500
+SnakePartSize 30
+SnakeAmountPart 10
+FruitSize 5
