@@ -58,7 +58,6 @@ public class AppSnake {
 
         });
         stage.setScene(scene);
-        stage.show();
 
     }
     private int getValueFromList(List<String> list,int numberIndex){

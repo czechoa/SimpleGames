@@ -18,21 +18,16 @@ import javafx.stage.Stage;
 public class App extends Application {
 
     private static Stage stage;
-    private int boardXSize;
-    private int boardYSize;
-    private int snakePartSize;
-    private int snakeAmountPart;
-    private int fruitSize;
 
     @Override
     public void start(Stage stage) throws IOException {
         this.stage = stage;
         Scene scene = new Scene(loadFXML("sample"));
         stage.setScene(scene);
+        stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
-//        scene.setRoot(loadFXML(fxml));
+    static void setRoot() {
         new AppSnake(stage);
     }
 
@@ -40,7 +35,6 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
-
 
     public static void main(String[] args) {
         launch(args);
