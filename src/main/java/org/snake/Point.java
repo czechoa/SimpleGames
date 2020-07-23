@@ -7,16 +7,16 @@ public abstract class Point {
     protected int yPosition;
     protected int size;
 
-
     Point(int xPosition,int yPosition,int size){
         this.xPosition = xPosition;
         this.yPosition = yPosition;
-        this.size = size;
     }
 
     public int getSize() {
         return size;
     }
+
+
 
     public int getxPosition() {
         return xPosition;

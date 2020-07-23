@@ -33,18 +33,18 @@ public class Snake {
             SnakePart snakePart;
             try {
                 SnakePart snakePartLast = snake.get(i - 1);
-                snakePart = new SnakePart(snakePartLast.xPosition + snakePartSize, snakePartLast.yPosition, snakePartSize);//right
+                snakePart = new SnakePart(snakePartLast.xPosition + snakePartSize, snakePartLast.yPosition);//right
                 if (outOfBoard(snakePart) || collisionWithAllPart(snakePart)) {
-                    snakePart = new SnakePart(snakePartLast.xPosition, snakePartLast.yPosition + snakePartSize, snakePartSize);//down
+                    snakePart = new SnakePart(snakePartLast.xPosition, snakePartLast.yPosition + snakePartSize);//down
                     if (outOfBoard(snakePart) || collisionWithAllPart(snakePart)) {
-                        snakePart = new SnakePart(snakePartLast.xPosition - snakePartSize, snakePartLast.yPosition, snakePartSize);//left
+                        snakePart = new SnakePart(snakePartLast.xPosition - snakePartSize, snakePartLast.yPosition);//left
                         if (outOfBoard(snakePart) || collisionWithAllPart(snakePart)) {
-                            snakePart = new SnakePart(snakePartLast.xPosition, snakePartLast.yPosition - snakePartSize, snakePartSize);//up
+                            snakePart = new SnakePart(snakePartLast.xPosition, snakePartLast.yPosition - snakePartSize);//up
                         }
                     }
                 }
             } catch (IndexOutOfBoundsException e) {
-                snakePart = new SnakePart(boardWidth / 2, boardHeight / 2, snakePartSize); // head
+                snakePart = new SnakePart(boardWidth / 2, boardHeight / 2); // head
 
             }
             snake.add(snakePart);
@@ -75,7 +75,7 @@ public class Snake {
             int lastSnakeItem = snake.size() - 1;
             int xPosition = snake.get(lastSnakeItem).getxPosition();
             int yPosition = snake.get(lastSnakeItem).getyPosition();
-            snake.add(new SnakePart(xPosition, yPosition, snakePartSize));
+            snake.add(new SnakePart(xPosition, yPosition));
         }
         boolean notFirst = false;
         for (SnakePart point : snake) {
@@ -122,6 +122,7 @@ public class Snake {
     }
 
     private boolean collision(Point head, Point point) {
+        System.out.println("head size" + head.getSize());
         if (head.getxPosition() + head.getSize() > point.getxPosition()) {
             if (head.getxPosition() < point.getxPosition() + point.getSize()) {
                 if (head.getyPosition() + head.getSize() > point.getyPosition()) {

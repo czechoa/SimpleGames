@@ -15,13 +15,7 @@ public class AppSnake implements StartScene {
     private int snakePartSize;
     private int snakeAmountPart;
     private int fruitSize;
-    private Stage stage;
 
-//    AppSnake(Stage stage){
-//
-//        this.stage = stage;
-//        start();
-//    }
 
     @Override
     public void start(Stage stage) {
@@ -34,6 +28,9 @@ public class AppSnake implements StartScene {
         snakePartSize = getValueFromList(list,2);
         snakeAmountPart = getValueFromList(list,3);
         fruitSize = getValueFromList(list,4);
+
+        SnakePart.setSize(snakePartSize);
+        Fruit.setSize(fruitSize);
 
         HBox hBox = new HBox();
         Canvas canvas = new Canvas(boardXSize, boardYSize);
