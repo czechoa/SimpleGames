@@ -9,7 +9,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-public class AppSnake {
+public class AppSnake implements StartScene {
     private int boardXSize;
     private int boardYSize;
     private int snakePartSize;
@@ -17,12 +17,14 @@ public class AppSnake {
     private int fruitSize;
     private Stage stage;
 
-    AppSnake(Stage stage){
+//    AppSnake(Stage stage){
+//
+//        this.stage = stage;
+//        start();
+//    }
 
-        this.stage = stage;
-        start();
-    }
-    public void start() {
+    @Override
+    public void start(Stage stage) {
 
 
         List<String> list = Reader.readerFile(Objects.requireNonNull(getClass().getClassLoader().getResource("dataToSnake")).getFile());

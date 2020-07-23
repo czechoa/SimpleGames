@@ -21,14 +21,14 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        this.stage = stage;
+        App.stage = stage;
         Scene scene = new Scene(loadFXML("sample"));
         stage.setScene(scene);
         stage.show();
     }
 
-    static void setRoot() {
-        new AppSnake(stage);
+    static void setScene(StartScene startScene) {
+        startScene.start(stage);
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

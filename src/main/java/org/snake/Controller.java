@@ -8,15 +8,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class Controller implements Initializable {
     public Button button;
     public Button buttonOut;
     public Label firstLabel;
     String message = "";
+    private Stage stage;
 
     public void handleButtonClick(ActionEvent actionEvent) throws IOException {
-        App.setRoot();
+        App.setScene(new AppSnake());
     }
 
     public void handleButtonOutClick(ActionEvent actionEvent) throws IOException {

@@ -93,7 +93,6 @@ public class Snake {
     }
 
     private void createNewFruit() {
-        System.out.println(fruitSize);
         do {
             fruit = Fruit.makeNewFruit(boardWidth, boardHeight,fruitSize);
         } while (collisionWithAllPart(fruit));
