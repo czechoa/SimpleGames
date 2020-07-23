@@ -22,7 +22,7 @@ public class Controller implements Initializable {
     }
 
     public void handleButtonOutClick(ActionEvent actionEvent) throws IOException {
-        System.exit(1);
+        App.setScene(new SceneOut());
     }
 
     @Override
