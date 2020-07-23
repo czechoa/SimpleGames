@@ -30,7 +30,7 @@ public class AppSnake implements StartScene {
         snakeAmountPart = getValueFromList(list,3);
         fruitSize = getValueFromList(list,4);
 
-        SnakePart.setSize(snakePartSize);
+//        SnakePart.setSize(snakePartSize);
         Fruit.setSize(fruitSize);
 
         HBox hBox = new HBox();

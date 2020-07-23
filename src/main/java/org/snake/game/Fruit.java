@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 
 public class Fruit extends Point {
 
-    private static int size;
+    private static int size = 10;
 
     private static Random random = new Random();
 

@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 
 public class SnakePart extends Point {
 
-    private static int size;
+    private static int size = 30;
 
 
     SnakePart(int xPosition, int yPosition) {
