@@ -10,6 +10,7 @@ public abstract class Point {
     Point(int xPosition,int yPosition,int size){
         this.xPosition = xPosition;
         this.yPosition = yPosition;
+        this.size = size;
     }
 
     public int getSize() {

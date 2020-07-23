@@ -6,10 +6,9 @@ import javafx.scene.paint.Color;
 
 public class Fruit extends Point {
 
-    private static int size;
+    private static int size = AppSnake.getFruitSize();
 
     private static Random random = new Random();
-//    private static int size = 100;
 
     Fruit(int xPosition, int yPosition) {
         super(xPosition, yPosition,size);
@@ -27,7 +26,7 @@ public class Fruit extends Point {
         return new Fruit(x,y);
     }
 
-    public static void setSize(int size) {
-        Fruit.size = size;
-    }
+//    public static void setSize(int size) {
+//        Fruit.size = size;
+//    }
 }

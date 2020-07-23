@@ -10,16 +10,15 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class AppSnake implements StartScene {
-    private int boardXSize;
+    private  int boardXSize;
     private int boardYSize;
-    private int snakePartSize;
+    private static int snakePartSize;
     private int snakeAmountPart;
-    private int fruitSize;
+    private static int fruitSize;
 
 
     @Override
     public void start(Stage stage) {
-
 
         List<String> list = Reader.readerFile(Objects.requireNonNull(getClass().getClassLoader().getResource("dataToSnake")).getFile());
 
@@ -29,8 +28,8 @@ public class AppSnake implements StartScene {
         snakeAmountPart = getValueFromList(list,3);
         fruitSize = getValueFromList(list,4);
 
-        SnakePart.setSize(snakePartSize);
-        Fruit.setSize(fruitSize);
+//        SnakePart.setSize(snakePartSize);
+//        Fruit.setSize(fruitSize);
 
         HBox hBox = new HBox();
         Canvas canvas = new Canvas(boardXSize, boardYSize);
@@ -62,5 +61,13 @@ public class AppSnake implements StartScene {
     private int getValueFromList(List<String> list,int numberIndex){
         String[] oneLine = list.get(numberIndex).split("\\s+");
         return Integer.parseInt(oneLine[1]);
+    }
+
+    public static int getSnakePartSize() {
+        return snakePartSize;
+    }
+
+    public static int getFruitSize() {
+        return fruitSize;
     }
 }
