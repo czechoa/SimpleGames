@@ -25,6 +25,9 @@ public class Controller implements Initializable,StartScene {
     public void handleButtonOutClick(ActionEvent actionEvent) throws IOException {
         App.setScene(new SceneOut());
     }
+    public void handleButtonSettingClick(ActionEvent actionEvent) throws IOException {
+        App.setScene(new SceneOut());
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,5 +44,6 @@ public class Controller implements Initializable,StartScene {
         }
         stage.setScene(scene);
         stage.show();
+
     }
 }
