@@ -23,8 +23,8 @@ public class SceneOut implements StartScene{
     public void handleButtonYesClick(ActionEvent actionEvent) throws IOException {
         System.exit(1);
     }
-    public void handleButtonNoClick(ActionEvent actionEvent) throws IOException {
-        App.setScene(new AppSnake());
+    public void handleButtonNoClick(ActionEvent actionEvent) throws IOException{
+        App.setScene(new Controller());
     }
 
 }
