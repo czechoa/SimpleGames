@@ -122,7 +122,6 @@ public class Snake {
     }
 
     private boolean collision(Point head, Point point) {
-        System.out.println("head size" + head.getSize());
         if (head.getxPosition() + head.getSize() > point.getxPosition()) {
             if (head.getxPosition() < point.getxPosition() + point.getSize()) {
                 if (head.getyPosition() + head.getSize() > point.getyPosition()) {
