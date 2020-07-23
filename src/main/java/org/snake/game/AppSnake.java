@@ -1,4 +1,4 @@
-package org.snake;
+package org.snake.game;
 
 import java.util.List;
 import java.util.Objects;
@@ -8,6 +8,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import org.snake.Reader;
+import org.snake.StartScene;
 
 public class AppSnake implements StartScene {
     private  int boardXSize;

@@ -1,4 +1,4 @@
-package org.snake;
+package org.snake.game;
 
 import java.util.Random;
 import javafx.scene.canvas.GraphicsContext;

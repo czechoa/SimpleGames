@@ -1,4 +1,4 @@
-package org.snake;
+package org.snake.game;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

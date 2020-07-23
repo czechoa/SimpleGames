@@ -1,8 +1,6 @@
-package org.snake;
+package org.snake.game;
 
 import javafx.animation.AnimationTimer;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
