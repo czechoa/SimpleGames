@@ -24,4 +24,7 @@ public class SnakePart extends Point {
         SnakePart.size = size;
     }
 
+    public static int getSnakePartSize() {
+        return size;
+    }
 }

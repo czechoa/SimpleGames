@@ -19,12 +19,12 @@ public class Snake {
     private int moveY;
     private boolean alive = true;
 
-    Snake(int boardWidth, int boardHeight,int snakePartSize,int amountSnakePartInStart,int fruitSize) {
+    Snake(int boardWidth, int boardHeight,int amountSnakePartInStart) {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
-        this.snakePartSize = snakePartSize;
+        this.snakePartSize = SnakePart.getSnakePartSize();
         this.amountSnakePartInStart = amountSnakePartInStart;
-        this.fruitSize = fruitSize;
+        this.fruitSize = Fruit.getFruitSize();
         createSnake();
     }
 

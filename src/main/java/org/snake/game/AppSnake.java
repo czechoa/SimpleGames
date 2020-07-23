@@ -35,13 +35,14 @@ public class AppSnake implements StartScene {
 
         HBox hBox = new HBox();
         Canvas canvas = new Canvas(boardXSize, boardYSize);
-
         hBox.getChildren().add(canvas);
-        Snake snake = new Snake(boardXSize, boardYSize,snakePartSize,snakeAmountPart,fruitSize);
+
+        Snake snake = new Snake(boardXSize, boardYSize,snakeAmountPart);
         RunLoop runLoop = new RunLoop(canvas, snake);
         runLoop.start();
 
         Scene scene = new Scene(hBox, boardXSize, boardYSize);
+
         scene.addEventFilter(KeyEvent.KEY_PRESSED, key -> {
             if (key.getCode() == KeyCode.W) {
                 snake.setDirection(Direction.UP);
@@ -65,11 +66,4 @@ public class AppSnake implements StartScene {
         return Integer.parseInt(oneLine[1]);
     }
 
-    public static int getSnakePartSize() {
-        return snakePartSize;
-    }
-
-    public static int getFruitSize() {
-        return fruitSize;
-    }
 }

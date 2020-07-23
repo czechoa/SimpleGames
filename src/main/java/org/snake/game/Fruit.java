@@ -29,4 +29,8 @@ public class Fruit extends Point {
     public static void setSize(int size) {
         Fruit.size = size;
     }
+
+    public static int getFruitSize() {
+        return size;
+    }
 }

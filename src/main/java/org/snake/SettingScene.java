@@ -6,10 +6,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
+import org.snake.game.AppSnake;
+import org.snake.game.SnakePart;
 
 public class SettingScene implements StartScene{
     Button button;
-    Slider slider;
+
+    public Slider slider;
     @Override
     public void start(Stage stage) {
         Scene scene = null;
@@ -20,9 +23,11 @@ public class SettingScene implements StartScene{
         }
         stage.setScene(scene);
     }
-    public void handleButtonClick(ActionEvent actionEvent) throws IOException {
-        double tmp = slider.getValue();
 
+    public void handleButtonClick(ActionEvent actionEvent) throws IOException {
+        SnakePart.setSize((int) slider.getValue());
+        System.out.println(slider.getValue());
+        App.setScene(new AppSnake());
     }
 
 }

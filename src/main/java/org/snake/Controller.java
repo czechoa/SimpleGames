@@ -26,7 +26,7 @@ public class Controller implements Initializable,StartScene {
         App.setScene(new SceneOut());
     }
     public void handleButtonSettingClick(ActionEvent actionEvent) throws IOException {
-        App.setScene(new SceneOut());
+        App.setScene(new SettingScene());
     }
 
     @Override
