@@ -12,11 +12,9 @@ import org.snake.Reader;
 import org.snake.StartScene;
 
 public class AppSnake implements StartScene {
-    private static   int boardXSize;
-    private static int boardYSize;
-    private static int snakePartSize;
-    private static int snakeAmountPart;
-    private static int fruitSize;
+    private static   int boardXSize = 500;
+    private static int boardYSize = 500;
+    private static int snakeAmountPart = 10;
 
 
     @Override
@@ -24,11 +22,11 @@ public class AppSnake implements StartScene {
 
         List<String> list = Reader.readerFile(Objects.requireNonNull(getClass().getClassLoader().getResource("dataToSnake")).getFile());
 
-        boardXSize = getValueFromList(list,0);
-        boardYSize = getValueFromList(list,1);
-        snakePartSize = getValueFromList(list,2);
-        snakeAmountPart = getValueFromList(list,3);
-        fruitSize = getValueFromList(list,4);
+//        boardXSize = getValueFromList(list,0);
+//        boardYSize = getValueFromList(list,1);
+//        snakePartSize = getValueFromList(list,2);
+//        snakeAmountPart = getValueFromList(list,3);
+//        fruitSize = getValueFromList(list,4);
 
 //        SnakePart.setSize(snakePartSize);
 //        Fruit.setSize(fruitSize);
@@ -70,19 +68,9 @@ public class AppSnake implements StartScene {
         AppSnake.boardXSize = boardXSize;
     }
 
-    public static void setBoardYSize(int boardYSize) {
-        AppSnake.boardYSize = boardYSize;
-    }
-
-    public static void setFruitSize(int fruitSize) {
-        AppSnake.fruitSize = fruitSize;
-    }
-
     public static void setSnakeAmountPart(int snakeAmountPart) {
         AppSnake.snakeAmountPart = snakeAmountPart;
     }
 
-    public static void setSnakePartSize(int snakePartSize) {
-        AppSnake.snakePartSize = snakePartSize;
-    }
+
 }
