@@ -45,17 +45,15 @@ public class SettingScene implements StartScene, Initializable {
     @FXML
     public void handleButtonClick(ActionEvent actionEvent) throws IOException {
 
-        AppSnake.setBoardXSize((int)sliderBoardWidth.getValue());
-        AppSnake.setBoardXSize((int)sliderBoardHeight.getValue());
-
-        AppSnake.setSnakeAmountPart((int)sliderAmountSnakeParts.getValue());
+//        AppSnake.setBoardXSize((int)sliderBoardWidth.getValue());
+//        AppSnake.setBoardXSize((int)sliderBoardHeight.getValue());
+//
+//        AppSnake.setSnakeAmountPart((int)sliderAmountSnakeParts.getValue());
         SnakePart.setSize((int) sliderSnakePartSize.getValue());
         Fruit.setSize((int)sliderFruitSize.getValue());
 
-
-
         System.out.println(sliderSnakePartSize.getValue());
-        App.setScene(new AppSnake());
+        App.setScene(new AppSnake((int)sliderBoardWidth.getValue(),(int)sliderBoardHeight.getValue(),(int)sliderAmountSnakeParts.getValue()));
 
     }
 
