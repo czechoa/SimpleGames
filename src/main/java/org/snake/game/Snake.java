@@ -12,7 +12,7 @@ public class Snake {
     private final int boardHeight;
     private ObservableList<SnakePart> snake = FXCollections.observableArrayList();
 
-    Fruit fruit;
+    private Fruit fruit;
     private Direction direction = Direction.LEFT;
     private int moveX;
     private int moveY;

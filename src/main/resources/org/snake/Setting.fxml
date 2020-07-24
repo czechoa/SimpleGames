@@ -5,7 +5,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="600.0" spacing="50.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.snake.SettingScene">
    <children>
@@ -21,7 +23,12 @@
                </opaqueInsets>
             </Slider>
             <Label fx:id="labelBoardWidth" text="Label" />
-            <Button mnemonicParsing="false" onAction="#handleButtonClick" text="Play" />
+            <Region prefHeight="26.0" prefWidth="67.0" />
+            <Button mnemonicParsing="false" onAction="#handleButtonClick" text="Play" textFill="#5e0b0b">
+               <font>
+                  <Font name="DejaVu Sans Mono Bold" size="13.0" />
+               </font>
+            </Button>
          </children>
          <padding>
             <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />

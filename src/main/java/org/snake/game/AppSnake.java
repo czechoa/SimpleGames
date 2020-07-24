@@ -54,12 +54,4 @@ public class AppSnake implements StartScene {
 
     }
 
-//    public static void setBoardXSize(int boardXSize) {
-//        AppSnake.boardXSize = boardXSize;
-//    }
-//
-//    public static void setSnakeAmountPart(int snakeAmountPart) {
-//        AppSnake.snakeAmountPart = snakeAmountPart;
-//    }
-
 }
