@@ -12,12 +12,22 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
 import org.snake.game.AppSnake;
+import org.snake.game.Fruit;
+import org.snake.game.Snake;
 import org.snake.game.SnakePart;
 
 public class SettingScene implements StartScene, Initializable {
     Button button;
-    public Label label;
-    public Slider slider;
+    public Label labelSnakePartSize;
+    public Label labelFruitSize;
+    public Label labelAmountSnakeParts;
+    public Label labelBoardWidth;
+    public Label labelBoardHeight;
+    public Slider sliderSnakePartSize;
+    public Slider sliderFruitSize;
+    public Slider sliderAmountSnakeParts;
+    public Slider sliderBoardWidth;
+    public Slider sliderBoardHeight;
 
 
     @Override
@@ -34,18 +44,37 @@ public class SettingScene implements StartScene, Initializable {
 
     @FXML
     public void handleButtonClick(ActionEvent actionEvent) throws IOException {
-        SnakePart.setSize((int) slider.getValue());
-        System.out.println(slider.getValue());
+
+        AppSnake.setBoardXSize((int)sliderBoardWidth.getValue());
+        AppSnake.setBoardXSize((int)sliderBoardHeight.getValue());
+
+        AppSnake.setSnakeAmountPart((int)sliderAmountSnakeParts.getValue());
+        SnakePart.setSize((int) sliderSnakePartSize.getValue());
+        Fruit.setSize((int)sliderFruitSize.getValue());
+
+
+
+        System.out.println(sliderSnakePartSize.getValue());
         App.setScene(new AppSnake());
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        addListener(sliderSnakePartSize,labelSnakePartSize);
+        addListener(sliderAmountSnakeParts,labelAmountSnakeParts);
+
+        addListener(sliderFruitSize,labelFruitSize);
+
+        addListener(sliderBoardHeight,labelBoardHeight);
+        addListener(sliderBoardWidth,labelBoardWidth);
+    }
+
+    private void addListener(Slider slider,Label label){
+
         label.setText(String.format("%.2f", slider.getValue()));
         slider.valueProperty().addListener((ov, old_val, new_val) -> {
             label.setText(String.format("%.2f", new_val));
         });
-
     }
 }

@@ -7,20 +7,98 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="50.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.snake.SettingScene">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="600.0" spacing="50.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.snake.SettingScene">
    <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
          <children>
-            <Label text="SnakePartSize" />
-            <Slider fx:id="slider" min="10.0" value="50.0">
+            <Label prefHeight="16.0" prefWidth="150.0" text="Board Witdh">
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding></Label>
+            <Slider fx:id="sliderBoardWidth" max="750.0" min="250.0" value="500.0">
                <opaqueInsets>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </opaqueInsets>
             </Slider>
-            <Label fx:id="label" text="Label" />
+            <Label fx:id="labelBoardWidth" text="Label" />
+            <Button mnemonicParsing="false" onAction="#handleButtonClick" text="Play" />
          </children>
+         <padding>
+            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+         </padding>
       </HBox>
-      <Button mnemonicParsing="false" onAction="#handleButtonClick" text="Play" />
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+         <children>
+            <Label prefHeight="16.0" prefWidth="150.0" text="Board Height">
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </Label>
+            <Slider fx:id="sliderBoardHeight" max="750.0" min="250.0" value="500.0">
+               <opaqueInsets>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </opaqueInsets>
+            </Slider>
+            <Label fx:id="labelBoardHeight" text="Label" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+         <children>
+            <Label prefHeight="16.0" prefWidth="150.0" text="Amount Snake Parts">
+               <padding>
+                  <Insets left="5.0" right="2.0" />
+               </padding>
+            </Label>
+            <Slider fx:id="sliderAmountSnakeParts" max="20.0" min="1.0" value="10.0">
+               <opaqueInsets>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </opaqueInsets>
+            </Slider>
+            <Label fx:id="labelAmountSnakeParts" text="Label" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+         <children>
+            <Label prefHeight="16.0" prefWidth="150.0" text="Size Snake Part">
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </Label>
+            <Slider fx:id="sliderSnakePartSize" min="10.0" value="50.0">
+               <opaqueInsets>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </opaqueInsets>
+            </Slider>
+            <Label fx:id="labelSnakePartSize" text="Label" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+         <children>
+            <Label prefHeight="16.0" prefWidth="150.0" text="Fruit Size">
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </Label>
+            <Slider fx:id="sliderFruitSize" max="30.0" min="5.0" value="10.0">
+               <opaqueInsets>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </opaqueInsets>
+            </Slider>
+            <Label fx:id="labelFruitSize" text="Label" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+         </padding>
+      </HBox>
    </children>
    <padding>
       <Insets top="10.0" />

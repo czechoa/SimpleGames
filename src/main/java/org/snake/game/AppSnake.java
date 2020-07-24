@@ -12,10 +12,10 @@ import org.snake.Reader;
 import org.snake.StartScene;
 
 public class AppSnake implements StartScene {
-    private  int boardXSize;
-    private int boardYSize;
+    private static   int boardXSize;
+    private static int boardYSize;
     private static int snakePartSize;
-    private int snakeAmountPart;
+    private static int snakeAmountPart;
     private static int fruitSize;
 
 
@@ -31,7 +31,7 @@ public class AppSnake implements StartScene {
         fruitSize = getValueFromList(list,4);
 
 //        SnakePart.setSize(snakePartSize);
-        Fruit.setSize(fruitSize);
+//        Fruit.setSize(fruitSize);
 
         HBox hBox = new HBox();
         Canvas canvas = new Canvas(boardXSize, boardYSize);
@@ -66,4 +66,23 @@ public class AppSnake implements StartScene {
         return Integer.parseInt(oneLine[1]);
     }
 
+    public static void setBoardXSize(int boardXSize) {
+        AppSnake.boardXSize = boardXSize;
+    }
+
+    public static void setBoardYSize(int boardYSize) {
+        AppSnake.boardYSize = boardYSize;
+    }
+
+    public static void setFruitSize(int fruitSize) {
+        AppSnake.fruitSize = fruitSize;
+    }
+
+    public static void setSnakeAmountPart(int snakeAmountPart) {
+        AppSnake.snakeAmountPart = snakeAmountPart;
+    }
+
+    public static void setSnakePartSize(int snakePartSize) {
+        AppSnake.snakePartSize = snakePartSize;
+    }
 }
