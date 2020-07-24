@@ -10,7 +10,6 @@ public class Snake {
     private final int snakePartSize;
     private final int boardWidth;
     private final int boardHeight;
-    private final int fruitSize;
     private ObservableList<SnakePart> snake = FXCollections.observableArrayList();
 
     Fruit fruit;
@@ -24,7 +23,6 @@ public class Snake {
         this.boardHeight = boardHeight;
         this.snakePartSize = SnakePart.getSnakePartSize();
         this.amountSnakePartInStart = amountSnakePartInStart;
-        this.fruitSize = Fruit.getFruitSize();
         createSnake();
     }
 
@@ -94,7 +92,7 @@ public class Snake {
 
     private void createNewFruit() {
         do {
-            fruit = Fruit.makeNewFruit(boardWidth, boardHeight,fruitSize);
+            fruit = Fruit.makeNewFruit(boardWidth, boardHeight);
         } while (collisionWithAllPart(fruit));
     }
 

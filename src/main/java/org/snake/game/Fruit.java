@@ -20,7 +20,7 @@ public class Fruit extends Point {
         graphics.fillOval(xPosition,yPosition, size, size);
     }
 
-    public static Fruit makeNewFruit(int boardWidth,int boardHeight,int size){
+    public static Fruit makeNewFruit(int boardWidth,int boardHeight){
         int x = random.nextInt(boardWidth - size);
         int y = random.nextInt(boardHeight - size);
         return new Fruit(x,y);
