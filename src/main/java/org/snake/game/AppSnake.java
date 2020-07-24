@@ -20,16 +20,7 @@ public class AppSnake implements StartScene {
     @Override
     public void start(Stage stage) {
 
-        List<String> list = Reader.readerFile(Objects.requireNonNull(getClass().getClassLoader().getResource("dataToSnake")).getFile());
 
-//        boardXSize = getValueFromList(list,0);
-//        boardYSize = getValueFromList(list,1);
-//        snakePartSize = getValueFromList(list,2);
-//        snakeAmountPart = getValueFromList(list,3);
-//        fruitSize = getValueFromList(list,4);
-
-//        SnakePart.setSize(snakePartSize);
-//        Fruit.setSize(fruitSize);
 
         HBox hBox = new HBox();
         Canvas canvas = new Canvas(boardXSize, boardYSize);
@@ -59,10 +50,7 @@ public class AppSnake implements StartScene {
         stage.setScene(scene);
 
     }
-    private int getValueFromList(List<String> list,int numberIndex){
-        String[] oneLine = list.get(numberIndex).split("\\s+");
-        return Integer.parseInt(oneLine[1]);
-    }
+
 
     public static void setBoardXSize(int boardXSize) {
         AppSnake.boardXSize = boardXSize;
