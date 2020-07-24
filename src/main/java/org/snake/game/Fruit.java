@@ -21,6 +21,7 @@ public class Fruit extends Point {
     }
 
     public static Fruit makeNewFruit(int boardWidth,int boardHeight){
+        int size = Math.max(Fruit.size, SnakePart.getSnakePartSize());
         int x = random.nextInt(boardWidth - size);
         int y = random.nextInt(boardHeight - size);
         return new Fruit(x,y);
@@ -30,7 +31,4 @@ public class Fruit extends Point {
         Fruit.size = size;
     }
 
-    public static int getFruitSize() {
-        return size;
-    }
 }
