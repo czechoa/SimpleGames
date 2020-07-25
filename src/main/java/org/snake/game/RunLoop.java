@@ -13,13 +13,14 @@ public class RunLoop extends AnimationTimer {
     private final GraphicsContext graphics;
     long  lastTick = 0;
     Snake snake;
+    private double stringSize;
 
 
     RunLoop(Canvas canvas, Snake snake){
         this.canvas = canvas;
         graphics = canvas.getGraphicsContext2D();
         this.snake = snake;
-
+        stringSize = Math.sqrt(canvas.getWidth()*canvas.getHeight())/8;
     }
 
     @Override
@@ -42,15 +43,20 @@ public class RunLoop extends AnimationTimer {
 
         snake.tick(graphics);
         if(!snake.isAlive()){
-            graphics.setFill(Color.RED);
-            graphics.setFont(new Font("", 50));
-            graphics.fillText("GAME OVER \n Score "+ snake.getLevel(), 100, 250);
+            readStringToScreen("GAME OVER \n Score ",Color.RED);
             stop();
         }
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
+    public void pressSpaceToStartGame(){
+        tick();
+        readStringToScreen("Press Space \n to Start ",Color.GREEN);
     }
+    private void readStringToScreen(String string,Color color){
+        graphics.setFill(color);
+        graphics.setFont(new Font("", stringSize));
+        graphics.fillText(string, canvas.getWidth()/8, canvas.getHeight()/2);
+    }
+
 
 }

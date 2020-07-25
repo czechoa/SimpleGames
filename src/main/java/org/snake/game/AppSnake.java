@@ -31,8 +31,6 @@ public class AppSnake implements StartScene {
 
         Snake snake = new Snake(boardXSize, boardYSize, snakeAmountPart);
         RunLoop runLoop = new RunLoop(canvas, snake);
-        runLoop.start();
-
         Scene scene = new Scene(hBox, boardXSize, boardYSize);
 
         scene.addEventFilter(KeyEvent.KEY_PRESSED, key -> {
@@ -48,10 +46,13 @@ public class AppSnake implements StartScene {
             if (key.getCode() == KeyCode.D) {
                 snake.setDirection(Direction.RIGHT);
             }
+            if(key.getCode() == KeyCode.SPACE){
+                runLoop.start();
+            }
 
         });
         stage.setScene(scene);
-
+        runLoop.pressSpaceToStartGame();
     }
 
 }
