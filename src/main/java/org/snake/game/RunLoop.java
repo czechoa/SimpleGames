@@ -14,6 +14,7 @@ public class RunLoop extends AnimationTimer {
     long  lastTick = 0;
     Snake snake;
     private double stringSize;
+    private String namePlayer = "Player 1";
 
 
     RunLoop(Canvas canvas, Snake snake){
@@ -46,6 +47,7 @@ public class RunLoop extends AnimationTimer {
             String gameOver = "GAME OVER \n Score  "  + snake.getLevel();
             readStringToScreen(gameOver,Color.RED);
             stop();
+            WriterScore.write("trala");
         }
     }
 
