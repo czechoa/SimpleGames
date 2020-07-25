@@ -43,7 +43,8 @@ public class RunLoop extends AnimationTimer {
 
         snake.tick(graphics);
         if(!snake.isAlive()){
-            readStringToScreen("GAME OVER \n Score ",Color.RED);
+            String gameOver = "GAME OVER \n Score  "  + snake.getLevel();
+            readStringToScreen(gameOver,Color.RED);
             stop();
         }
     }
