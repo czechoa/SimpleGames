@@ -70,9 +70,9 @@ public class SettingScene implements StartScene, Initializable {
 
     private void addListener(Slider slider,Label label){
 
-        label.setText(String.format("%.2f", slider.getValue()));
+        label.setText(String.format("%.0f", slider.getValue()));
         slider.valueProperty().addListener((ov, old_val, new_val) -> {
-            label.setText(String.format("%.2f", new_val));
+            label.setText(String.format("%.0f", new_val));
         });
     }
 }
