@@ -29,7 +29,7 @@ public class ScoreScene implements StartScene, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ArrayList<String> list = WriterScore.read();
+        ArrayList<String> list = WriterReaderFileScore.read();
         for (String result : list) {
             text.appendText(result + " \n");
 

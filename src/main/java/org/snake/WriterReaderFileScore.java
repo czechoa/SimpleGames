@@ -6,14 +6,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
-public class WriterScore {
+public class WriterReaderFileScore {
     public static void write(String string) {
         String path = "results";
         try {
-            ClassLoader classLoader = new WriterScore().getClass().getClassLoader();
-            File file = new File(classLoader.getResource(path).getFile());
+            ClassLoader classLoader = WriterReaderFileScore.class.getClassLoader();
+            File file = new File(Objects.requireNonNull(classLoader.getResource(path)).getFile());
             System.out.println(file.getPath());
 
             //File is found
@@ -25,7 +25,7 @@ public class WriterScore {
             bw.write(string);
             bw.close();
         } catch (Exception e) {
-            System.out.println(e);
+            e.getMessage();
         }
     }
     public static ArrayList<String> read() {
@@ -33,8 +33,8 @@ public class WriterScore {
         ArrayList<String> list = new ArrayList<>();
 
         try {
-            ClassLoader classLoader = new WriterScore().getClass().getClassLoader();
-            File file = new File(classLoader.getResource(path).getFile());
+            ClassLoader classLoader = WriterReaderFileScore.class.getClassLoader();
+            File file = new File(Objects.requireNonNull(classLoader.getResource(path)).getFile());
             System.out.println(file.getPath());
 
             //File is found
@@ -48,7 +48,7 @@ public class WriterScore {
                 list.add(string);
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.getMessage();
         }
 
         return list;

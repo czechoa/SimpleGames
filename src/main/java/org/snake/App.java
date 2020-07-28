@@ -13,17 +13,17 @@ public class App extends Application {
     private static Stage stage;
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
         App.stage = stage;
         setScene(new Controller());
 
     }
 
-    static void setScene(StartScene startScene) {
+     public static void setScene(StartScene startScene) {
         startScene.start(stage);
     }
 
-    static Parent loadFXML(String fxml) throws IOException {
+     public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
