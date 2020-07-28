@@ -25,8 +25,12 @@ public class Controller implements Initializable,StartScene {
     public void handleButtonOutClick(ActionEvent actionEvent) throws IOException {
         App.setScene(new SceneOut());
     }
+
     public void handleButtonSettingClick(ActionEvent actionEvent) throws IOException {
         App.setScene(new SettingScene());
+    }
+    public void handleButtonScoreClick(ActionEvent actionEvent) throws IOException {
+        App.setScene(new ScoreScene());
     }
 
     @Override

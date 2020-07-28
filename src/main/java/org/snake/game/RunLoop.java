@@ -5,6 +5,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import org.snake.WriterScore;
 
 public class RunLoop extends AnimationTimer {
 
@@ -47,7 +48,7 @@ public class RunLoop extends AnimationTimer {
             String gameOver = "GAME OVER \n Score  "  + snake.getLevel();
             readStringToScreen(gameOver,Color.RED);
             stop();
-            WriterScore.write("trala");
+            WriterScore.write(" " +snake.getLevel());
         }
     }
 
