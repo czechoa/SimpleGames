@@ -154,7 +154,7 @@ public class Snake {
     }
 
     public int getLevel() {
-        return snake.size() - amountSnakePartInStart + 1;
+        return snake.size() - amountSnakePartInStart;
     }
 
 }

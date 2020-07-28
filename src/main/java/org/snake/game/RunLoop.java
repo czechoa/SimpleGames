@@ -42,11 +42,13 @@ public class RunLoop extends AnimationTimer {
     private void tick(){
         graphics.setFill(Color.BLACK);
         graphics.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
-
+        writeStringToScreen("score :" +snake.getLevel(),Color.YELLOW);
         snake.tick(graphics);
         if(!snake.isAlive()){
+            graphics.setFill(Color.BLACK);
+            graphics.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
             String gameOver = "GAME OVER \n Score  "  + snake.getLevel();
-            readStringToScreen(gameOver,Color.RED);
+            writeStringToScreen(gameOver,Color.RED);
             stop();
             WriterReaderFileScore.write(" " +snake.getLevel());
         }
@@ -54,9 +56,9 @@ public class RunLoop extends AnimationTimer {
 
     public void pressSpaceToStartGame(){
         tick();
-        readStringToScreen("Press Space \n to Start ",Color.GREEN);
+        writeStringToScreen("Press Space \n to Start ",Color.GREEN);
     }
-    private void readStringToScreen(String string,Color color){
+    private void writeStringToScreen(String string, Color color){
         graphics.setFill(color);
         graphics.setFont(new Font("", stringSize));
         graphics.fillText(string, canvas.getWidth()/8, canvas.getHeight()/2);

@@ -8,4 +8,8 @@ public class WriterReaderFileScoreTest {
     public void write() {
         WriterReaderFileScore.write("trala");
     }
+    @Test
+    public void write2() {
+        WriterReaderFileScore.write("trala22");
+    }
 }

@@ -13,6 +13,8 @@ public class AppSnake implements StartScene {
     private int boardXSize = 500;
     private int boardYSize = 500;
     private int snakeAmountPart = 10;
+    boolean onlyInStart = true;
+
     public AppSnake(){
 
     }
@@ -46,7 +48,8 @@ public class AppSnake implements StartScene {
             if (key.getCode() == KeyCode.D) {
                 snake.setDirection(Direction.RIGHT);
             }
-            if(key.getCode() == KeyCode.SPACE){
+            if(key.getCode() == KeyCode.SPACE && onlyInStart){
+                onlyInStart = false;
                 runLoop.start();
             }
 
