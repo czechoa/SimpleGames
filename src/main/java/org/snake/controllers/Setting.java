@@ -3,11 +3,9 @@ package org.snake.controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
@@ -16,7 +14,7 @@ import org.snake.game.Fruit;
 import org.snake.game.SnakePart;
 
 public class Setting implements StartScene, Initializable {
-    Button button;
+
     public Label labelSnakePartSize;
     public Label labelFruitSize;
     public Label labelAmountSnakeParts;
@@ -28,12 +26,11 @@ public class Setting implements StartScene, Initializable {
     public Slider sliderBoardWidth;
     public Slider sliderBoardHeight;
 
-
     @Override
     public void start(Stage stage) {
         Scene scene = null;
         try {
-            scene = new Scene(Main.loadFXML("Setting"));
+            scene = new Scene(Main.loadFXML("setting"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -42,36 +39,34 @@ public class Setting implements StartScene, Initializable {
 
 
     @FXML
-    public void handleButtonClick(ActionEvent actionEvent) throws IOException {
+    public void handleButtonStartClick() {
 
-//        AppSnake.setBoardXSize((int)sliderBoardWidth.getValue());
-//        AppSnake.setBoardXSize((int)sliderBoardHeight.getValue());
-//
-//        AppSnake.setSnakeAmountPart((int)sliderAmountSnakeParts.getValue());
         SnakePart.setSize((int) sliderSnakePartSize.getValue());
-        Fruit.setSize((int)sliderFruitSize.getValue());
+        Fruit.setSize((int) sliderFruitSize.getValue());
+        Main.setScene(new AppSnake((int) sliderBoardWidth.getValue(), (int) sliderBoardHeight.getValue(), (int) sliderAmountSnakeParts.getValue()));
 
-        System.out.println(sliderSnakePartSize.getValue());
-        Main.setScene(new AppSnake((int)sliderBoardWidth.getValue(),(int)sliderBoardHeight.getValue(),(int)sliderAmountSnakeParts.getValue()));
+    }
+
+    @FXML
+    public void handleButtonMenuClick() {
+        Main.setScene(new Menu());
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        addListener(sliderSnakePartSize,labelSnakePartSize);
-        addListener(sliderAmountSnakeParts,labelAmountSnakeParts);
 
-        addListener(sliderFruitSize,labelFruitSize);
+        addListener(sliderSnakePartSize, labelSnakePartSize);
+        addListener(sliderAmountSnakeParts, labelAmountSnakeParts);
+        addListener(sliderFruitSize, labelFruitSize);
+        addListener(sliderBoardHeight, labelBoardHeight);
+        addListener(sliderBoardWidth, labelBoardWidth);
 
-        addListener(sliderBoardHeight,labelBoardHeight);
-        addListener(sliderBoardWidth,labelBoardWidth);
     }
 
-    private void addListener(Slider slider,Label label){
+    private void addListener(Slider slider, Label label) {
 
         label.setText(String.format("%.0f", slider.getValue()));
-        slider.valueProperty().addListener((ov, old_val, new_val) -> {
-            label.setText(String.format("%.0f", new_val));
-        });
+        slider.valueProperty().addListener((ov, old_val, new_val) -> label.setText(String.format("%.0f", new_val)));
     }
 }

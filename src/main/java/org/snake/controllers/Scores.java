@@ -14,7 +14,7 @@ import org.snake.Score;
 import org.snake.WriterReaderFileScore;
 import org.snake.game.AppSnake;
 
-public class Scores implements StartScene, Initializable, WriterReaderFileScore {
+public class Scores implements StartScene, Initializable {
 
     @FXML
     TableView<Score> table;
