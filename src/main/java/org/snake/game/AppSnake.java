@@ -17,15 +17,17 @@ public class AppSnake implements StartScene {
     private int snakeAmountPart = 10;
     boolean onlyInStart = true;
 
-    public AppSnake(){
+    public AppSnake() {
 
     }
-    public AppSnake(int boardXSize,int boardYSize,int snakeAmountPart){
+
+    public AppSnake(int boardXSize, int boardYSize, int snakeAmountPart) {
 
         this.boardXSize = boardXSize;
         this.boardYSize = boardYSize;
         this.snakeAmountPart = snakeAmountPart;
     }
+
     @Override
     public void start(Stage stage) {
 
@@ -50,17 +52,17 @@ public class AppSnake implements StartScene {
             if (key.getCode() == KeyCode.D) {
                 snake.setDirection(Direction.RIGHT);
             }
-            if(key.getCode() == KeyCode.SPACE && onlyInStart){
+            if (key.getCode() == KeyCode.SPACE && onlyInStart) {
                 onlyInStart = false;
                 runLoop.start();
             }
-            if(!snake.isAlive() && key.getCode() == KeyCode.ENTER){
+            if (!snake.isAlive() && key.getCode() == KeyCode.ENTER) {
                 Main.setScene(new Menu());
             }
 
-
         });
         stage.setScene(scene);
+        stage.centerOnScreen();
         runLoop.pressSpaceToStartGame();
     }
 

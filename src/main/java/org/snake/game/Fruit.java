@@ -8,23 +8,23 @@ public class Fruit extends Point {
 
     private static int size = 10;
 
-    private static Random random = new Random();
+    private static final Random random = new Random();
 
     Fruit(int xPosition, int yPosition) {
-        super(xPosition, yPosition,size);
+        super(xPosition, yPosition, size);
     }
 
     @Override
     public void paint(GraphicsContext graphics) {
         graphics.setFill(Color.YELLOW);
-        graphics.fillOval(xPosition,yPosition, size, size);
+        graphics.fillOval(xPosition, yPosition, size, size);
     }
 
-    public static Fruit makeNewFruit(int boardWidth,int boardHeight){
+    static Fruit makeNewFruit(int boardWidth, int boardHeight) {
         int size = Math.max(Fruit.size, SnakePart.getSnakePartSize());
-        int x = random.nextInt(boardWidth - 2*size) + size;
-        int y = random.nextInt(boardHeight - 2*size) + size;
-        return new Fruit(x,y);
+        int x = random.nextInt(boardWidth - 2 * size) + size;
+        int y = random.nextInt(boardHeight - 2 * size) + size;
+        return new Fruit(x, y);
     }
 
     public static void setSize(int size) {

@@ -71,8 +71,8 @@ public class Snake {
         if (collision(head, fruit)) {
             createNewFruit();
             int lastSnakeItem = snake.size() - 1;
-            int xPosition = snake.get(lastSnakeItem).getxPosition();
-            int yPosition = snake.get(lastSnakeItem).getyPosition();
+            int xPosition = snake.get(lastSnakeItem).getXPosition();
+            int yPosition = snake.get(lastSnakeItem).getYPosition();
             snake.add(new SnakePart(xPosition, yPosition));
         }
         boolean notFirst = false;
@@ -102,28 +102,28 @@ public class Snake {
             SnakePart point = snake.get(i);
             if (i == 0) { // head
                 chooseMove();
-                point.setxPosition(point.getxPosition() + moveX);
-                point.setyPosition(point.getyPosition() + moveY);
+                point.setXPosition(point.getXPosition() + moveX);
+                point.setYPosition(point.getYPosition() + moveY);
 
             } else {
-                point.setxPosition(snake.get(i - 1).getxPosition());
-                point.setyPosition(snake.get(i - 1).getyPosition());
+                point.setXPosition(snake.get(i - 1).getXPosition());
+                point.setYPosition(snake.get(i - 1).getYPosition());
             }
 
         }
     }
 
     private boolean outOfBoard(SnakePart head) {
-        int x = head.getxPosition();
-        int y = head.getyPosition();
+        int x = head.getXPosition();
+        int y = head.getYPosition();
         return x < 0 || (x + snakePartSize) > boardWidth || y < 0 || (y + snakePartSize) > boardHeight;
     }
 
     private boolean collision(Point head, Point point) {
-        if (head.getxPosition() + head.getSize() > point.getxPosition()) {
-            if (head.getxPosition() < point.getxPosition() + point.getSize()) {
-                if (head.getyPosition() + head.getSize() > point.getyPosition()) {
-                    return head.getyPosition() < point.getyPosition() + point.getSize();
+        if (head.getXPosition() + head.getSize() > point.getXPosition()) {
+            if (head.getXPosition() < point.getXPosition() + point.getSize()) {
+                if (head.getYPosition() + head.getSize() > point.getYPosition()) {
+                    return head.getYPosition() < point.getYPosition() + point.getSize();
 
                 }
             }

@@ -18,7 +18,6 @@ public class RunLoop extends AnimationTimer {
     private long lastTick = 0;
     private final Snake snake;
     private final double stringSize;
-    private final String namePlayer = "Player 1";
 
 
     RunLoop(Canvas canvas, Snake snake) {
@@ -50,32 +49,32 @@ public class RunLoop extends AnimationTimer {
         graphics.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         if (snake.isAlive()) {
             snake.tick(graphics);
-            graphics.setFill(Color.WHITE);
-            graphics.setFont(new Font("", scoreStringSize));
-            graphics.fillText("score: " + speed, 0, scoreStringSize);
+            writeStringToScreen("score: " + speed, scoreStringSize, 0, scoreStringSize, Color.WHITE);
+
         } else {
             String gameOver = "GAME OVER \n Score  " + snake.getLevel();
-            writeStringToScreen(gameOver, Color.RED);
+            writeStringToScreen(gameOver, stringSize, canvas.getWidth() / 8, canvas.getHeight() / 3, Color.RED);
+            writeStringToScreen("Press Enter to restart", scoreStringSize, canvas.getWidth() / 8, canvas.getHeight() - scoreStringSize, Color.BLUE);
             stop();
-            WriterReaderFileScore.write(snake.getLevel()+ " " +getCurrentTimeStamp()  );
+            WriterReaderFileScore.write(snake.getLevel() + " " + getCurrentTimeStamp());
         }
     }
 
-    public void pressSpaceToStartGame() {
+    void pressSpaceToStartGame() {
         tick();
-        writeStringToScreen("Press Space \n to Start ", Color.GREEN);
+        writeStringToScreen("Press Space \n to Start ", stringSize, canvas.getWidth() / 8, canvas.getHeight() / 3, Color.GREEN);
     }
 
-    private void writeStringToScreen(String string, Color color) {
+    private void writeStringToScreen(String string, double stringSize, double startWidth, double startHeight, Color color) {
         graphics.setFill(color);
         graphics.setFont(new Font("", stringSize));
-        graphics.fillText(string, canvas.getWidth() / 8, canvas.getHeight() / 2);
+        graphics.fillText(string, startWidth, startHeight); // 8,2
     }
-    public String getCurrentTimeStamp() {
+
+    private String getCurrentTimeStamp() {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd-MM-yyyy ");
         Date now = new Date();
-        String strDate = sdf.format(now);
-        return strDate;
+        return sdf.format(now);
     }
 
 

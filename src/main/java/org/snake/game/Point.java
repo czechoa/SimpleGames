@@ -7,7 +7,7 @@ public abstract class Point {
     protected int yPosition;
     protected int size;
 
-    Point(int xPosition,int yPosition,int size){
+    Point(int xPosition, int yPosition, int size) {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
         this.size = size;
@@ -18,20 +18,19 @@ public abstract class Point {
     }
 
 
-
-    public int getxPosition() {
+    public int getXPosition() {
         return xPosition;
     }
 
-    public void setxPosition(int xPosition) {
+    public void setXPosition(int xPosition) {
         this.xPosition = xPosition;
     }
 
-    public int getyPosition() {
+    public int getYPosition() {
         return yPosition;
     }
 
-    public void setyPosition(int yPosition) {
+    public void setYPosition(int yPosition) {
         this.yPosition = yPosition;
     }
 
