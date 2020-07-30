@@ -1,4 +1,4 @@
-package org.snake.controller;
+package org.snake.controllers;
 
 
 import java.io.IOException;
@@ -8,14 +8,14 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 
-public class App extends Application {
+public class Main extends Application {
 
     private static Stage stage;
 
     @Override
     public void start(Stage stage) {
-        App.stage = stage;
-        setScene(new Controller());
+        Main.stage = stage;
+        setScene(new Menu());
 
     }
 
@@ -24,7 +24,7 @@ public class App extends Application {
     }
 
      public static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 

@@ -3,6 +3,6 @@ module org.example {
     requires javafx.fxml;
 
     opens org.snake to javafx.base;
-    opens org.snake.controller to javafx.fxml;
-    exports org.snake.controller;
+    opens org.snake.controllers to javafx.fxml;
+    exports org.snake.controllers;
 }

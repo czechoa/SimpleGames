@@ -1,4 +1,4 @@
-package org.snake.controller;
+package org.snake.controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.snake.game.AppSnake;
 
-public class Controller implements Initializable, StartScene {
+public class Menu implements Initializable, StartScene {
     public Button button;
     public Button buttonOut;
     public Label firstLabel;
@@ -19,18 +19,18 @@ public class Controller implements Initializable, StartScene {
     private Stage stage;
 
     public void handleButtonClick(ActionEvent actionEvent) throws IOException {
-        App.setScene(new AppSnake());
+        Main.setScene(new AppSnake());
     }
 
     public void handleButtonOutClick(ActionEvent actionEvent) throws IOException {
-        App.setScene(new SceneOut());
+        Main.setScene(new Out());
     }
 
     public void handleButtonSettingClick(ActionEvent actionEvent) throws IOException {
-        App.setScene(new SettingScene());
+        Main.setScene(new Setting());
     }
     public void handleButtonScoreClick(ActionEvent actionEvent) throws IOException {
-        App.setScene(new ScoreScene());
+        Main.setScene(new Scores());
     }
 
     @Override
@@ -42,7 +42,7 @@ public class Controller implements Initializable, StartScene {
     public void start(Stage stage) {
         Scene scene = null;
         try {
-            scene = new Scene(App.loadFXML("sample"));
+            scene = new Scene(Main.loadFXML("sample"));
         } catch (IOException e) {
             e.printStackTrace();
         }

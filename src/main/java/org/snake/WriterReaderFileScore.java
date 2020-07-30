@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Objects;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 
 public class WriterReaderFileScore {
@@ -45,8 +44,8 @@ public class WriterReaderFileScore {
 
         return list;
     }
-    public static ObservableList<Result> read_1() {
-        ObservableList<Result> list = FXCollections.observableArrayList();
+    public static ObservableList<Score> read_1() {
+        ObservableList<Score> list = FXCollections.observableArrayList();
         try {
             File file =  loadFileFromResources();
 
@@ -58,7 +57,7 @@ public class WriterReaderFileScore {
                 String[] w = oneLine.split("\\s+");
                 try {
                     System.out.printf(w[0]);
-                    list.add(new Result(w[0],w[1] +" "+ w[2]));
+                    list.add(new Score(w[0],w[1] +" "+ w[2]));
                 }catch (Exception e){
 
                 }

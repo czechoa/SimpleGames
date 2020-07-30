@@ -1,4 +1,4 @@
-package org.snake.controller;
+package org.snake.controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,7 +15,7 @@ import org.snake.game.AppSnake;
 import org.snake.game.Fruit;
 import org.snake.game.SnakePart;
 
-public class SettingScene implements StartScene, Initializable {
+public class Setting implements StartScene, Initializable {
     Button button;
     public Label labelSnakePartSize;
     public Label labelFruitSize;
@@ -33,7 +33,7 @@ public class SettingScene implements StartScene, Initializable {
     public void start(Stage stage) {
         Scene scene = null;
         try {
-            scene = new Scene(App.loadFXML("Setting"));
+            scene = new Scene(Main.loadFXML("Setting"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,7 +52,7 @@ public class SettingScene implements StartScene, Initializable {
         Fruit.setSize((int)sliderFruitSize.getValue());
 
         System.out.println(sliderSnakePartSize.getValue());
-        App.setScene(new AppSnake((int)sliderBoardWidth.getValue(),(int)sliderBoardHeight.getValue(),(int)sliderAmountSnakeParts.getValue()));
+        Main.setScene(new AppSnake((int)sliderBoardWidth.getValue(),(int)sliderBoardHeight.getValue(),(int)sliderAmountSnakeParts.getValue()));
 
     }
 

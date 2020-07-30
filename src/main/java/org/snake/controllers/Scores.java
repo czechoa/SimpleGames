@@ -1,4 +1,4 @@
-package org.snake.controller;
+package org.snake.controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,18 +16,18 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import org.snake.Result;
+import org.snake.Score;
 import org.snake.WriterReaderFileScore;
 
-public class ScoreScene implements StartScene, Initializable {
+public class Scores implements StartScene, Initializable {
     @FXML
     TextArea text;
     @FXML
-    TableView<Result> table;
+    TableView<Score> table;
     @FXML
-    TableColumn<Result, String> result;
+    TableColumn<Score, String> result;
     @FXML
-    TableColumn<Result, String> data;
+    TableColumn<Score, String> data;
     @FXML
     Button menu;
 
@@ -35,7 +35,7 @@ public class ScoreScene implements StartScene, Initializable {
     public void start(Stage stage) {
         Scene scene = null;
         try {
-            scene = new Scene(App.loadFXML("score"));
+            scene = new Scene(Main.loadFXML("score"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -44,7 +44,7 @@ public class ScoreScene implements StartScene, Initializable {
 
     }
     public void handleButtonClick(ActionEvent actionEvent) throws IOException {
-        App.setScene(new Controller());
+        Main.setScene(new Menu());
     }
 
     @Override
@@ -64,10 +64,10 @@ public class ScoreScene implements StartScene, Initializable {
 
     }
 
-    private ObservableList<Result> getProduct() {
-        ObservableList<Result> products = FXCollections.observableArrayList();
-        products.add(new Result("100", "data 1"));
-        products.add(new Result("11","data 2"));
+    private ObservableList<Score> getProduct() {
+        ObservableList<Score> products = FXCollections.observableArrayList();
+        products.add(new Score("100", "data 1"));
+        products.add(new Score("11","data 2"));
         return products;
     }
 }

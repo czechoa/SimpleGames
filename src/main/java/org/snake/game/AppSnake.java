@@ -6,9 +6,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import org.snake.controller.App;
-import org.snake.controller.Controller;
-import org.snake.controller.StartScene;
+import org.snake.controllers.Main;
+import org.snake.controllers.Menu;
+import org.snake.controllers.StartScene;
 
 public class AppSnake implements StartScene {
 
@@ -55,7 +55,7 @@ public class AppSnake implements StartScene {
                 runLoop.start();
             }
             if(!snake.isAlive() && key.getCode() == KeyCode.ENTER){
-                App.setScene(new Controller());
+                Main.setScene(new Menu());
             }
 
 

@@ -1,6 +1,5 @@
-package org.snake.controller;
+package org.snake.controllers;
 
-import java.io.IOException;
 import javafx.stage.Stage;
 
 public interface StartScene {
