@@ -34,5 +34,6 @@ public class Menu implements StartScene {
         }
         stage.setScene(scene);
         stage.show();
+        stage.centerOnScreen();
     }
 }

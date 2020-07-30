@@ -32,7 +32,7 @@ public class Scores implements StartScene, Initializable {
             e.printStackTrace();
         }
         stage.setScene(scene);
-
+        stage.centerOnScreen();
     }
 
     public void handleButtonMenuClick() {

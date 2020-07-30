@@ -14,6 +14,7 @@ public class Out implements StartScene {
             e.printStackTrace();
         }
         stage.setScene(scene);
+        stage.centerOnScreen();
     }
 
     public void handleButtonYesClick() {

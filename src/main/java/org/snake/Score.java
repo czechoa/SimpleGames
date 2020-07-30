@@ -4,7 +4,7 @@ public class Score {
     private String data;
     private String score;
 
-    public Score(String score, String data){
+    public Score(String score, String data) {
         this.data = data;
         this.score = score;
     }

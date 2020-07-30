@@ -35,6 +35,7 @@ public class Setting implements StartScene, Initializable {
             e.printStackTrace();
         }
         stage.setScene(scene);
+        stage.centerOnScreen();
     }
 
 

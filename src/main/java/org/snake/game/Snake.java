@@ -1,16 +1,15 @@
 package org.snake.game;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.ArrayList;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Snake {
 
-    private int amountSnakePartInStart;
+    private final int amountSnakePartInStart;
     private final int snakePartSize;
     private final int boardWidth;
     private final int boardHeight;
-    private ObservableList<SnakePart> snake = FXCollections.observableArrayList(); // Arraylist tez moze byc
+    private final ArrayList<SnakePart> snake = new ArrayList<>(); // Arraylist tez moze byc
 
     private Fruit fruit;
     private Direction direction = Direction.LEFT;
@@ -18,7 +17,7 @@ public class Snake {
     private int moveY;
     private boolean alive = true;
 
-    Snake(int boardWidth, int boardHeight,int amountSnakePartInStart) {
+    Snake(int boardWidth, int boardHeight, int amountSnakePartInStart) {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.snakePartSize = SnakePart.getSnakePartSize();
@@ -60,7 +59,7 @@ public class Snake {
         return false;
     }
 
-    public void tick(GraphicsContext graphics) {
+    void tick(GraphicsContext graphics) {
         setSnakeItemSizePosition();
         SnakePart head = snake.get(0);
 
