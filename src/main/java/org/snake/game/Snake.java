@@ -10,7 +10,7 @@ public class Snake {
     private final int snakePartSize;
     private final int boardWidth;
     private final int boardHeight;
-    private ObservableList<SnakePart> snake = FXCollections.observableArrayList();
+    private ObservableList<SnakePart> snake = FXCollections.observableArrayList(); // Arraylist tez moze byc
 
     private Fruit fruit;
     private Direction direction = Direction.LEFT;

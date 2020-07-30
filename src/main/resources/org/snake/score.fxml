@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.snake.ScoreScene">
    <children>
-      <TextArea fx:id="text" layoutX="5.0" layoutY="5.0" prefHeight="392.0" prefWidth="600.0" />
+      <TextArea fx:id="text" layoutX="410.0" layoutY="5.0" prefHeight="392.0" prefWidth="195.0" />
+      <TableView fx:id="table" layoutX="135.0" layoutY="11.0" prefHeight="289.0" prefWidth="225.0">
+        <columns>
+          <TableColumn fx:id="result" prefWidth="75.0" text="C1" />
+          <TableColumn fx:id="data" prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
