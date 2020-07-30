@@ -1,7 +1,6 @@
 package org.snake.controllers;
 
 import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -17,11 +16,11 @@ public class Out implements StartScene {
         stage.setScene(scene);
     }
 
-    public void handleButtonYesClick(ActionEvent actionEvent) throws IOException {
-        System.exit(1);
+    public void handleButtonYesClick() {
+        System.exit(0);
     }
 
-    public void handleButtonNoClick(ActionEvent actionEvent) throws IOException {
+    public void handleButtonNoClick() {
         Main.setScene(new Menu());
     }
 
