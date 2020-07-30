@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.snake.ScoreScene">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.snake.controller.ScoreScene">
    <children>
       <TextArea fx:id="text" layoutX="366.0" layoutY="188.0" prefHeight="198.0" prefWidth="195.0" />
       <TableView fx:id="table" layoutX="2.0" layoutY="3.0" prefHeight="392.0" prefWidth="358.0">

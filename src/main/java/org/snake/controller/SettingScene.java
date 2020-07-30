@@ -1,4 +1,4 @@
-package org.snake;
+package org.snake.controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -13,7 +13,6 @@ import javafx.scene.control.Slider;
 import javafx.stage.Stage;
 import org.snake.game.AppSnake;
 import org.snake.game.Fruit;
-import org.snake.game.Snake;
 import org.snake.game.SnakePart;
 
 public class SettingScene implements StartScene, Initializable {

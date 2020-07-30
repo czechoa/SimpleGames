@@ -1,4 +1,4 @@
-package org.snake;
+package org.snake.controller;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;

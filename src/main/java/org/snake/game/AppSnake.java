@@ -6,9 +6,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import org.snake.App;
-import org.snake.Controller;
-import org.snake.StartScene;
+import org.snake.controller.App;
+import org.snake.controller.Controller;
+import org.snake.controller.StartScene;
 
 public class AppSnake implements StartScene {
 

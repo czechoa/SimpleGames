@@ -1,4 +1,4 @@
-package org.snake;
+package org.snake.controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.snake.game.AppSnake;
 
-public class Controller implements Initializable,StartScene {
+public class Controller implements Initializable, StartScene {
     public Button button;
     public Button buttonOut;
     public Label firstLabel;

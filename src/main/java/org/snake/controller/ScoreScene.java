@@ -1,4 +1,4 @@
-package org.snake;
+package org.snake.controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,7 +16,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import org.snake.game.AppSnake;
+import org.snake.Result;
+import org.snake.WriterReaderFileScore;
 
 public class ScoreScene implements StartScene, Initializable {
     @FXML
