@@ -9,7 +9,7 @@ public class Snake {
     private final int snakePartSize;
     private final int boardWidth;
     private final int boardHeight;
-    private final ArrayList<SnakePart> snake = new ArrayList<>(); // Arraylist tez moze byc
+    private final ArrayList<SnakePart> snake = new ArrayList<>();
 
     private Fruit fruit;
     private Direction direction = Direction.LEFT;
@@ -47,7 +47,6 @@ public class Snake {
             snake.add(snakePart);
         }
         createNewFruit();
-
     }
 
     private boolean collisionWithAllPart(Point point) {
@@ -130,7 +129,7 @@ public class Snake {
         return false;
     }
 
-    private void chooseMove() {
+    private synchronized void chooseMove() {
         moveX = 0;
         moveY = 0;
         if (direction == Direction.LEFT) {
@@ -144,7 +143,7 @@ public class Snake {
         }
     }
 
-    public void setDirection(Direction direction) {
+    public synchronized void setDirection(Direction direction) {
         this.direction = direction;
     }
 

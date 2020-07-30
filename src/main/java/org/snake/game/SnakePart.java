@@ -7,7 +7,6 @@ public class SnakePart extends Point {
 
     private static int size = 30;
 
-
     SnakePart(int xPosition, int yPosition) {
         super(xPosition, yPosition, size);
     }
