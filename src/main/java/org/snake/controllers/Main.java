@@ -19,11 +19,11 @@ public class Main extends Application {
 
     }
 
-     public static void setScene(StartScene startScene) {
+    public static void setScene(StartScene startScene) {
         startScene.start(stage);
     }
 
-     public static Parent loadFXML(String fxml) throws IOException {
+    static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
