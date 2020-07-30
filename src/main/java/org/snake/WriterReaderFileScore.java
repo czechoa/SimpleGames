@@ -9,8 +9,8 @@ import java.util.Objects;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class WriterReaderFileScore {
-    public static void write(String string) {
+public interface WriterReaderFileScore {
+    static void write(String string) {
         try {
             File file = loadFileFromResources();
 
@@ -24,7 +24,7 @@ public class WriterReaderFileScore {
         }
     }
 
-    public static ObservableList<Score> read() {
+    static ObservableList<Score> read() {
         ObservableList<Score> list = FXCollections.observableArrayList();
         try {
             File file = loadFileFromResources();
