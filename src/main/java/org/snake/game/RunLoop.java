@@ -57,7 +57,7 @@ public class RunLoop extends AnimationTimer {
             String gameOver = "GAME OVER \n Score  " + snake.getLevel();
             writeStringToScreen(gameOver, Color.RED);
             stop();
-            WriterReaderFileScore.write(getCurrentTimeStamp() + " " + snake.getLevel());
+            WriterReaderFileScore.write(snake.getLevel()+ " " +getCurrentTimeStamp()  );
         }
     }
 
@@ -72,7 +72,7 @@ public class RunLoop extends AnimationTimer {
         graphics.fillText(string, canvas.getWidth() / 8, canvas.getHeight() / 2);
     }
     public String getCurrentTimeStamp() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd-MM-yyyy ");
         Date now = new Date();
         String strDate = sdf.format(now);
         return strDate;

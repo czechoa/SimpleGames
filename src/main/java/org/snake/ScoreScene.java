@@ -45,19 +45,13 @@ public class ScoreScene implements StartScene, Initializable {
             text.appendText(result + " \n");
 
         }
+
         text.setEditable(false);
-        //Price column
-//        TableColumn<Result, String> priceColumn = new TableColumn<>("Price");
-//        priceColumn.setMinWidth(100);
         result.setCellValueFactory(new PropertyValueFactory<>("score"));
 
-        //Quantity column
-//        TableColumn<Result, String> quantityColumn = new TableColumn<>("Quantity");
-//        quantityColumn.setMinWidth(100);
         data.setCellValueFactory(new PropertyValueFactory<>("data"));
 
-        table.setItems(getProduct());
-//        table.getColumns().addAll(priceColumn, quantityColumn);
+        table.setItems(WriterReaderFileScore.read_1());
 
     }
 
