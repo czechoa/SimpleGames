@@ -5,7 +5,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.ArrayList;
 import java.util.Objects;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,33 +20,14 @@ public class WriterReaderFileScore {
             bw.newLine();
             bw.write(string);
             bw.close();
-        } catch (Exception e) {
-            e.getMessage();
+        } catch (Exception ignored) {
         }
     }
 
-    public static ArrayList<String> read() {
-        ArrayList<String> list = new ArrayList<>();
-        try {
-            File file =  loadFileFromResources();
-
-            FileReader fw = new FileReader(file);
-            BufferedReader bw = new BufferedReader(fw);
-
-            String string;
-            while ((string = bw.readLine()) != null) {
-                list.add(string);
-            }
-        } catch (Exception e) {
-            e.getMessage();
-        }
-
-        return list;
-    }
-    public static ObservableList<Score> read_1() {
+    public static ObservableList<Score> read() {
         ObservableList<Score> list = FXCollections.observableArrayList();
         try {
-            File file =  loadFileFromResources();
+            File file = loadFileFromResources();
 
             FileReader fw = new FileReader(file);
             BufferedReader bw = new BufferedReader(fw);
@@ -56,14 +36,12 @@ public class WriterReaderFileScore {
             while ((oneLine = bw.readLine()) != null) {
                 String[] w = oneLine.split("\\s+");
                 try {
-                    System.out.printf(w[0]);
-                    list.add(new Score(w[0],w[1] +" "+ w[2]));
-                }catch (Exception e){
+                    list.add(new Score(w[0], w[1] + " " + w[2]));
+                } catch (Exception ignored) {
 
                 }
             }
-        } catch (Exception e) {
-            e.getMessage();
+        } catch (Exception ignored) {
         }
 
         return list;
@@ -73,11 +51,7 @@ public class WriterReaderFileScore {
         String path = "results";
 
         ClassLoader classLoader = WriterReaderFileScore.class.getClassLoader();
-        File file = new File(Objects.requireNonNull(classLoader.getResource(path)).getFile());
-        System.out.println(file.getPath());
 
-        //File is found
-        System.out.println("File Found : " + file.exists());
-        return file;
+        return new File(Objects.requireNonNull(classLoader.getResource(path)).getFile());
     }
 }
