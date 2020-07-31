@@ -39,5 +39,17 @@ public abstract class Point {
         this.yPosition = yPosition;
     }
 
+    public boolean collision(Point point) {
+        if (this.getXPosition() + this.getSize() > point.getXPosition()) {
+            if (this.getXPosition() < point.getXPosition() + point.getSize()) {
+                if (this.getYPosition() + this.getSize() > point.getYPosition()) {
+                    return this.getYPosition() < point.getYPosition() + point.getSize();
+
+                }
+            }
+        }
+        return false;
+    }
+
     public abstract void paint(GraphicsContext graphics);
 }

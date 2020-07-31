@@ -23,6 +23,7 @@ public class Snake {
         this.snakePartSize = SnakePart.getSnakePartSize();
         this.amountSnakePartInStart = amountSnakePartInStart;
         createSnake();
+        createNewFruit();
     }
 
     private void createSnake() {
@@ -31,11 +32,11 @@ public class Snake {
             try {
                 SnakePart snakePartLast = snake.get(i - 1);
                 snakePart = new SnakePart(snakePartLast.xPosition + snakePartSize, snakePartLast.yPosition);//right
-                if (outOfBoard(snakePart) || collisionWithAllPart(snakePart)) {
+                if (outOfBoard(snakePart) || collisionWithSnake(snakePart)) {
                     snakePart = new SnakePart(snakePartLast.xPosition, snakePartLast.yPosition + snakePartSize);//down
-                    if (outOfBoard(snakePart) || collisionWithAllPart(snakePart)) {
+                    if (outOfBoard(snakePart) || collisionWithSnake(snakePart)) {
                         snakePart = new SnakePart(snakePartLast.xPosition - snakePartSize, snakePartLast.yPosition);//left
-                        if (outOfBoard(snakePart) || collisionWithAllPart(snakePart)) {
+                        if (outOfBoard(snakePart) || collisionWithSnake(snakePart)) {
                             snakePart = new SnakePart(snakePartLast.xPosition, snakePartLast.yPosition - snakePartSize);//up
                         }
                     }
@@ -46,43 +47,45 @@ public class Snake {
             }
             snake.add(snakePart);
         }
-        createNewFruit();
     }
 
-    private boolean collisionWithAllPart(Point point) {
+    private boolean collisionWithSnake(Point point) {
         for (SnakePart snakePart : snake) {
             if (collision(point, snakePart)) {
                 return true;
             }
+
         }
         return false;
     }
 
     void tick(GraphicsContext graphics) {
-        moveSnake();
-        SnakePart head = snake.get(0);
 
-        if (outOfBoard(head)) {
-            alive = false;
-            return;
-        }
-        if (collision(head, fruit)) {
-           eatFruit();
-        }
-        boolean notFirst = false;
-        for (SnakePart point : snake) {
-            if (notFirst) {
-                if (collision(head, point)) {
+        moveSnake();
+        SnakePart head =null;
+
+        for (int i = 0;i < snake.size();i++) {
+            SnakePart snakePart = snake.get(i);
+            if (i == 0) {
+                head = snakePart;
+                if (outOfBoard(head)) {
                     alive = false;
                     return;
                 }
+                if (collision(head, fruit)) {
+                    eatFruit();
+                }
             } else {
-                notFirst = true;
+                if (collision(head, snakePart)) {
+                    alive = false;
+                    return;
+                }
             }
-            point.paint(graphics);
+            snakePart.paint(graphics);
         }
         fruit.paint(graphics);
     }
+
     private void eatFruit(){
         createNewFruit();
         int lastSnakeItem = snake.size() - 1;
@@ -94,7 +97,7 @@ public class Snake {
     private void createNewFruit() {
         do {
             fruit = Fruit.makeNewFruit(boardWidth, boardHeight);
-        } while (collisionWithAllPart(fruit));
+        } while (collisionWithSnake(fruit));
     }
 
 
