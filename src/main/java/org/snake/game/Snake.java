@@ -29,24 +29,27 @@ public class Snake {
     private void createSnake() {
         for (int i = 0; i < amountSnakePartInStart; i++) {
             SnakePart snakePart;
-            try {
+            if (i == 0) {
+                snakePart = new SnakePart(boardWidth / 2, boardHeight / 2); // head
+            } else {
                 SnakePart snakePartLast = snake.get(i - 1);
                 snakePart = new SnakePart(snakePartLast.xPosition + snakePartSize, snakePartLast.yPosition);//right
-                if (outOfBoard(snakePart) || collisionWithSnake(snakePart)) {
+                if (canNotCreateNewSnakePart(snakePart)) {
                     snakePart = new SnakePart(snakePartLast.xPosition, snakePartLast.yPosition + snakePartSize);//down
-                    if (outOfBoard(snakePart) || collisionWithSnake(snakePart)) {
+                    if (canNotCreateNewSnakePart(snakePart)) {
                         snakePart = new SnakePart(snakePartLast.xPosition - snakePartSize, snakePartLast.yPosition);//left
-                        if (outOfBoard(snakePart) || collisionWithSnake(snakePart)) {
+                        if (canNotCreateNewSnakePart(snakePart)) {
                             snakePart = new SnakePart(snakePartLast.xPosition, snakePartLast.yPosition - snakePartSize);//up
                         }
                     }
                 }
-            } catch (IndexOutOfBoundsException e) {
-                snakePart = new SnakePart(boardWidth / 2, boardHeight / 2); // head
-
             }
             snake.add(snakePart);
         }
+    }
+
+    private boolean canNotCreateNewSnakePart(SnakePart snakePart) {
+        return outOfBoard(snakePart) || collisionWithSnake(snakePart);
     }
 
     private boolean collisionWithSnake(Point point) {
@@ -54,17 +57,27 @@ public class Snake {
             if (point.collision(snakePart)) {
                 return true;
             }
-
         }
         return false;
     }
 
     void tick(GraphicsContext graphics) {
-
         moveSnake();
-        SnakePart head =null;
+        paintAndCollision(graphics);
+        fruit.paint(graphics);
+    }
 
-        for (int i = 0;i < snake.size();i++) {
+    private void eatFruitAndGrown() {
+        createNewFruit();
+        int lastSnakeItem = snake.size() - 1;
+        int xPosition = snake.get(lastSnakeItem).getXPosition();
+        int yPosition = snake.get(lastSnakeItem).getYPosition();
+        snake.add(new SnakePart(xPosition, yPosition));
+    }
+
+    private void paintAndCollision(GraphicsContext graphics) {
+        SnakePart head = null;
+        for (int i = 0; i < snake.size(); i++) {
             SnakePart snakePart = snake.get(i);
             if (i == 0) {
                 head = snakePart;
@@ -73,7 +86,7 @@ public class Snake {
                     return;
                 }
                 if (head.collision(fruit)) {
-                    eatFruit();
+                    eatFruitAndGrown();
                 }
             } else {
                 if (head.collision(snakePart)) {
@@ -83,15 +96,6 @@ public class Snake {
             }
             snakePart.paint(graphics);
         }
-        fruit.paint(graphics);
-    }
-
-    private void eatFruit(){
-        createNewFruit();
-        int lastSnakeItem = snake.size() - 1;
-        int xPosition = snake.get(lastSnakeItem).getXPosition();
-        int yPosition = snake.get(lastSnakeItem).getYPosition();
-        snake.add(new SnakePart(xPosition, yPosition));
     }
 
     private void createNewFruit() {
@@ -100,18 +104,15 @@ public class Snake {
         } while (collisionWithSnake(fruit));
     }
 
-
     private void moveSnake() {
         for (int i = snake.size() - 1; i >= 0; i--) {
             SnakePart point = snake.get(i);
             if (i == 0) { // head
                 chooseMove();
                 point.setPosition(point.getXPosition() + moveX, point.getYPosition() + moveY);
-
             } else {
                 point.setPosition(snake.get(i - 1).getXPosition(), snake.get(i - 1).getYPosition());
             }
-
         }
     }
 
@@ -146,5 +147,4 @@ public class Snake {
     public int getLevel() {
         return snake.size() - amountSnakePartInStart;
     }
-
 }
