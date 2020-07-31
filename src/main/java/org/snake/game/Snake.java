@@ -67,11 +67,7 @@ public class Snake {
             return;
         }
         if (collision(head, fruit)) {
-            createNewFruit();
-            int lastSnakeItem = snake.size() - 1;
-            int xPosition = snake.get(lastSnakeItem).getXPosition();
-            int yPosition = snake.get(lastSnakeItem).getYPosition();
-            snake.add(new SnakePart(xPosition, yPosition));
+           eatFruit();
         }
         boolean notFirst = false;
         for (SnakePart point : snake) {
@@ -86,6 +82,13 @@ public class Snake {
             point.paint(graphics);
         }
         fruit.paint(graphics);
+    }
+    private void eatFruit(){
+        createNewFruit();
+        int lastSnakeItem = snake.size() - 1;
+        int xPosition = snake.get(lastSnakeItem).getXPosition();
+        int yPosition = snake.get(lastSnakeItem).getYPosition();
+        snake.add(new SnakePart(xPosition, yPosition));
     }
 
     private void createNewFruit() {
