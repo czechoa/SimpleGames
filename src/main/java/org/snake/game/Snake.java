@@ -51,7 +51,7 @@ public class Snake {
 
     private boolean collisionWithSnake(Point point) {
         for (SnakePart snakePart : snake) {
-            if (collision(point, snakePart)) {
+            if (point.collision(snakePart)) {
                 return true;
             }
 
@@ -72,11 +72,11 @@ public class Snake {
                     alive = false;
                     return;
                 }
-                if (collision(head, fruit)) {
+                if (head.collision(fruit)) {
                     eatFruit();
                 }
             } else {
-                if (collision(head, snakePart)) {
+                if (head.collision(snakePart)) {
                     alive = false;
                     return;
                 }
@@ -119,18 +119,6 @@ public class Snake {
         int x = head.getXPosition();
         int y = head.getYPosition();
         return x < 0 || (x + snakePartSize) > boardWidth || y < 0 || (y + snakePartSize) > boardHeight;
-    }
-
-    private boolean collision(Point head, Point point) {
-        if (head.getXPosition() + head.getSize() > point.getXPosition()) {
-            if (head.getXPosition() < point.getXPosition() + point.getSize()) {
-                if (head.getYPosition() + head.getSize() > point.getYPosition()) {
-                    return head.getYPosition() < point.getYPosition() + point.getSize();
-
-                }
-            }
-        }
-        return false;
     }
 
     private synchronized void chooseMove() {
