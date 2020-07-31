@@ -18,6 +18,8 @@ public class AppSnake implements StartScene {
     boolean onlyInStart = true;
 
     public AppSnake() {
+        Fruit.setDefaultSizeSize();
+        SnakePart.setDefaultSizeSize();
 
     }
 

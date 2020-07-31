@@ -6,7 +6,8 @@ import javafx.scene.paint.Color;
 
 public class Fruit extends Point {
 
-    private static int size = 10;
+    private static final int defaultSize = 10;
+    private static int size = defaultSize;
 
     private static final Random random = new Random();
 
@@ -29,6 +30,10 @@ public class Fruit extends Point {
 
     public static void setSize(int size) {
         Fruit.size = size;
+    }
+
+    public static void setDefaultSizeSize() {
+        Fruit.size = defaultSize;
     }
 
 }

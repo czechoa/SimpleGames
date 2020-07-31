@@ -100,10 +100,10 @@ public class Snake {
             SnakePart point = snake.get(i);
             if (i == 0) { // head
                 chooseMove();
-                point.setPosition(point.getXPosition() + moveX,point.getYPosition() + moveY);
+                point.setPosition(point.getXPosition() + moveX, point.getYPosition() + moveY);
 
             } else {
-                point.setPosition(snake.get(i - 1).getXPosition(),snake.get(i - 1).getYPosition());
+                point.setPosition(snake.get(i - 1).getXPosition(), snake.get(i - 1).getYPosition());
             }
 
         }

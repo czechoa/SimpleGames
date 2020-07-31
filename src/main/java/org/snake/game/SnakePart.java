@@ -5,10 +5,15 @@ import javafx.scene.paint.Color;
 
 public class SnakePart extends Point {
 
-    private static int size = 30;
+    private final static int defaultSize = 30;
+    private static int size = defaultSize;
 
     SnakePart(int xPosition, int yPosition) {
         super(xPosition, yPosition, size);
+    }
+
+    public static void setDefaultSizeSize() {
+        size = defaultSize;
     }
 
     @Override
