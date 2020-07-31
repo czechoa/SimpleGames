@@ -34,5 +34,10 @@ public abstract class Point {
         this.yPosition = yPosition;
     }
 
+    public void setPosition(int xPosition,int yPosition){
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
+    }
+
     public abstract void paint(GraphicsContext graphics);
 }

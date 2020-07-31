@@ -59,7 +59,7 @@ public class Snake {
     }
 
     void tick(GraphicsContext graphics) {
-        setSnakeItemSizePosition();
+        moveSnake();
         SnakePart head = snake.get(0);
 
         if (outOfBoard(head)) {
@@ -95,17 +95,15 @@ public class Snake {
     }
 
 
-    private void setSnakeItemSizePosition() {
+    private void moveSnake() {
         for (int i = snake.size() - 1; i >= 0; i--) {
             SnakePart point = snake.get(i);
             if (i == 0) { // head
                 chooseMove();
-                point.setXPosition(point.getXPosition() + moveX);
-                point.setYPosition(point.getYPosition() + moveY);
+                point.setPosition(point.getXPosition() + moveX,point.getYPosition() + moveY);
 
             } else {
-                point.setXPosition(snake.get(i - 1).getXPosition());
-                point.setYPosition(snake.get(i - 1).getYPosition());
+                point.setPosition(snake.get(i - 1).getXPosition(),snake.get(i - 1).getYPosition());
             }
 
         }
