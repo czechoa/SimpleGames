@@ -1,11 +1,15 @@
 package org.snake.controllers;
 
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.snake.WriterReaderFileScore;
 
 
 public class Main extends Application {
@@ -14,6 +18,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
+        stage.getIcons().add(new Image(Main.class.getResourceAsStream("/snake.png")));
         Main.stage = stage;
         setScene(new Menu());
 

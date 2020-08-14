@@ -49,6 +49,12 @@ public class Scores implements StartScene, Initializable {
         data.setCellValueFactory(new PropertyValueFactory<>("data"));
 
         table.setItems(WriterReaderFileScore.read());
+        var list = WriterReaderFileScore.read();
+        System.out.println(list.isEmpty());
+        for(Score score : list){
+            System.out.println(score.getScore());
+        }
+        System.out.println("print");
         table.setEditable(false);
     }
 }

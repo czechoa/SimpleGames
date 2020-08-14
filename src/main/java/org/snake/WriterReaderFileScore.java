@@ -1,10 +1,7 @@
 package org.snake;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
+import java.net.URL;
 import java.util.Objects;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,7 +13,6 @@ public interface WriterReaderFileScore {
 
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
-
             bw.newLine();
             bw.write(string);
             bw.close();
@@ -27,12 +23,14 @@ public interface WriterReaderFileScore {
     static ObservableList<Score> read() {
         ObservableList<Score> list = FXCollections.observableArrayList();
         try {
-            File file = loadFileFromResources();
+//            File file = loadFileFromResources();
+//            FileReader fw = new FileReader(file);
+//            BufferedReader bw = new BufferedReader(fw);
+            InputStream input = WriterReaderFileScore.class.getResourceAsStream("/results");
+            var inputStreamReader = new InputStreamReader(WriterReaderFileScore.class.getResourceAsStream("/results"));
 
-            FileReader fw = new FileReader(file);
-            BufferedReader bw = new BufferedReader(fw);
-
-            String oneLine;
+            BufferedReader bw = new BufferedReader(inputStreamReader);
+           String oneLine;
             while ((oneLine = bw.readLine()) != null) {
                 String[] w = oneLine.split("\\s+");
                 try {

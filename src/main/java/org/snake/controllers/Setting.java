@@ -20,6 +20,7 @@ public class Setting implements StartScene, Initializable {
     public Label labelAmountSnakeParts;
     public Label labelBoardWidth;
     public Label labelBoardHeight;
+
     public Slider sliderSnakePartSize;
     public Slider sliderFruitSize;
     public Slider sliderAmountSnakeParts;
@@ -36,6 +37,7 @@ public class Setting implements StartScene, Initializable {
         }
         stage.setScene(scene);
         stage.centerOnScreen();
+
     }
 
 
