@@ -7,10 +7,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public interface WriterReaderFileScore {
+
+    String fileName = "result";
     static void write(String string) {
         try {
-//            File file = loadFileFromResources();
-            File file = new File("result");
+            File file = new File(fileName);
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
             bw.newLine();
@@ -23,14 +24,7 @@ public interface WriterReaderFileScore {
     static ObservableList<Score> read() {
         ObservableList<Score> list = FXCollections.observableArrayList();
         try {
-//            File file = loadFileFromResources();
-//            FileReader fw = new FileReader(file);
-//            BufferedReader bw = new BufferedReader(fw);
-
-//            InputStream input = WriterReaderFileScore.class.getResourceAsStream("/results");
-//            var inputStreamReader = new InputStreamReader(WriterReaderFileScore.class.getResourceAsStream("/results"));
-
-            BufferedReader bw = new BufferedReader(new FileReader("result"));
+            BufferedReader bw = new BufferedReader(new FileReader(fileName));
            String oneLine;
             while ((oneLine = bw.readLine()) != null) {
                 String[] w = oneLine.split("\\s+");
@@ -46,11 +40,4 @@ public interface WriterReaderFileScore {
         return list;
     }
 
-    private static File loadFileFromResources() {
-        String path = "results";
-
-        ClassLoader classLoader = WriterReaderFileScore.class.getClassLoader();
-
-        return new File(Objects.requireNonNull(classLoader.getResource(path)).getFile());
-    }
 }
