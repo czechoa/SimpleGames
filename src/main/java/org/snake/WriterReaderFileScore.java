@@ -9,8 +9,8 @@ import javafx.collections.ObservableList;
 public interface WriterReaderFileScore {
     static void write(String string) {
         try {
-            File file = loadFileFromResources();
-
+//            File file = loadFileFromResources();
+            File file = new File("result");
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
             bw.newLine();
@@ -26,10 +26,11 @@ public interface WriterReaderFileScore {
 //            File file = loadFileFromResources();
 //            FileReader fw = new FileReader(file);
 //            BufferedReader bw = new BufferedReader(fw);
-            InputStream input = WriterReaderFileScore.class.getResourceAsStream("/results");
-            var inputStreamReader = new InputStreamReader(WriterReaderFileScore.class.getResourceAsStream("/results"));
 
-            BufferedReader bw = new BufferedReader(inputStreamReader);
+//            InputStream input = WriterReaderFileScore.class.getResourceAsStream("/results");
+//            var inputStreamReader = new InputStreamReader(WriterReaderFileScore.class.getResourceAsStream("/results"));
+
+            BufferedReader bw = new BufferedReader(new FileReader("result"));
            String oneLine;
             while ((oneLine = bw.readLine()) != null) {
                 String[] w = oneLine.split("\\s+");
