@@ -12,7 +12,10 @@ public class Menu implements StartScene {
 //        Main.setScene(new AppSnake());
 //    }
     public void handleButtonClick() {
-        Main.setScene(new Game());
+        Game game = new Game();
+        Main.setScene(game);
+        game.run();
+
     }
 
     public void handleButtonOutClick() {

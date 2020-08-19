@@ -20,7 +20,7 @@ public class RunLoop extends AnimationTimer {
     private final double stringSize;
 
 
-    RunLoop(Canvas canvas, Snake snake) {
+    public RunLoop(Canvas canvas, Snake snake) {
         this.canvas = canvas;
         graphics = canvas.getGraphicsContext2D();
         this.snake = snake;
@@ -60,7 +60,7 @@ public class RunLoop extends AnimationTimer {
         }
     }
 
-    void pressSpaceToStartGame() {
+    public void pressSpaceToStartGame() {
         tick();
         writeStringToScreen("Press Space \n to Start ", stringSize, canvas.getWidth() / 8, canvas.getHeight() / 3, Color.GREEN);
     }

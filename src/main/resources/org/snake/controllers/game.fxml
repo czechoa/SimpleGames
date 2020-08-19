@@ -3,9 +3,8 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.snake.controllers.Game">
    <children>
-      <Canvas fx:id="canvas" height="399.0" width="600.0" />
+      <Canvas fx:id="canvasfxml" height="400.0" width="600.0" />
    </children>
 </VBox>

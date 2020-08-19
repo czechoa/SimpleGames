@@ -10,61 +10,39 @@ import org.snake.controllers.Main;
 import org.snake.controllers.Menu;
 import org.snake.controllers.StartScene;
 
-public class AppSnake implements StartScene {
+public class AppSnake{
 
     private int boardXSize = 500;
     private int boardYSize = 500;
     private int snakeAmountPart = 10;
     boolean onlyInStart = true;
+    public static Canvas canvas;
 
-    public AppSnake() {
+    public static void setCanvas(Canvas canvas) {
+        AppSnake.canvas = canvas;
+    }
+
+//    public AppSnake() {
+//        Fruit.setDefaultSizeSize();
+//        SnakePart.setDefaultSizeSize();
+//        canvas = new Canvas();
+//    }
+//
+//    public AppSnake(int boardXSize, int boardYSize, int snakeAmountPart, Canvas canvas) {
+//
+//        this.boardXSize = boardXSize;
+//        this.boardYSize = boardYSize;
+//        this.snakeAmountPart = snakeAmountPart;
+//        this.canvas = canvas;
+//    }
+
+    public void start() {
         Fruit.setDefaultSizeSize();
         SnakePart.setDefaultSizeSize();
-
-    }
-
-    public AppSnake(int boardXSize, int boardYSize, int snakeAmountPart) {
-
-        this.boardXSize = boardXSize;
-        this.boardYSize = boardYSize;
-        this.snakeAmountPart = snakeAmountPart;
-    }
-
-    @Override
-    public void start(Stage stage) {
-
-        HBox hBox = new HBox();
-        Canvas canvas = new Canvas(boardXSize, boardYSize);
-        hBox.getChildren().add(canvas);
-
+        canvas.setWidth(boardXSize);
+        canvas.setHeight(boardYSize);
         Snake snake = new Snake(boardXSize, boardYSize, snakeAmountPart);
         RunLoop runLoop = new RunLoop(canvas, snake);
-        Scene scene = new Scene(hBox, boardXSize, boardYSize);
-
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, key -> {
-            if (key.getCode() == KeyCode.W) {
-                snake.setDirection(Direction.UP);
-            }
-            if (key.getCode() == KeyCode.A) {
-                snake.setDirection(Direction.LEFT);
-            }
-            if (key.getCode() == KeyCode.S) {
-                snake.setDirection(Direction.DOWN);
-            }
-            if (key.getCode() == KeyCode.D) {
-                snake.setDirection(Direction.RIGHT);
-            }
-            if (key.getCode() == KeyCode.SPACE && onlyInStart) {
-                onlyInStart = false;
-                runLoop.start();
-            }
-            if (!snake.isAlive() && key.getCode() == KeyCode.ENTER) {
-                Main.setScene(new Menu());
-            }
-
-        });
-        stage.setScene(scene);
-        stage.centerOnScreen();
         runLoop.pressSpaceToStartGame();
     }
 
