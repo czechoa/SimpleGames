@@ -8,8 +8,11 @@ import org.snake.game.AppSnake;
 public class Menu implements StartScene {
 
 
+//    public void handleButtonClick() {
+//        Main.setScene(new AppSnake());
+//    }
     public void handleButtonClick() {
-        Main.setScene(new AppSnake());
+        Main.setScene(new Game());
     }
 
     public void handleButtonOutClick() {

@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
@@ -46,7 +47,7 @@ public class Setting implements StartScene, Initializable {
 
         SnakePart.setSize((int) sliderSnakePartSize.getValue());
         Fruit.setSize((int) sliderFruitSize.getValue());
-        Main.setScene(new AppSnake((int) sliderBoardWidth.getValue(), (int) sliderBoardHeight.getValue(), (int) sliderAmountSnakeParts.getValue()));
+        Main.setScene(new AppSnake((int) sliderBoardWidth.getValue(), (int) sliderBoardHeight.getValue(), (int) sliderAmountSnakeParts.getValue(),new Canvas()));
 
     }
 
