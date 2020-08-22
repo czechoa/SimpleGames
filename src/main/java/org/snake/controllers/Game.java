@@ -22,7 +22,7 @@ public class Game implements StartScene, Initializable {
     @FXML
     public Canvas canvasfxml;
 
-    public Canvas canvas;
+    public static Canvas canvas;
 
 
     private final int boardXSize = 500;
@@ -49,7 +49,7 @@ public class Game implements StartScene, Initializable {
 
         System.out.println("start "+ x);
         try {
-            scene = new Scene(Main.loadFXML("game"));
+            scene = new Scene(Main.loadFXML("game"),boardXSize,boardYSize);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -58,6 +58,9 @@ public class Game implements StartScene, Initializable {
         this.stage = stage;
         stage.setScene(scene);
         stage.centerOnScreen();
+        if(canvas == null){
+            System.out.println("null in run");
+        }
 
     }
 
@@ -67,7 +70,12 @@ public class Game implements StartScene, Initializable {
         Fruit.setDefaultSizeSize();
         SnakePart.setDefaultSizeSize();
         Snake snake = new Snake(boardXSize, boardYSize, snakeAmountPart);
-        RunLoop runLoop = new RunLoop(canvasfxml, snake);
+        if(canvas == null){
+            System.out.println("null in run");
+            System.out.println(canvas.getHeight());
+            System.out.println(canvas.getWidth());
+        }
+        RunLoop runLoop = new RunLoop(canvas, snake);
 
         scene.addEventFilter(KeyEvent.KEY_PRESSED, key -> {
             if (key.getCode() == KeyCode.W) {

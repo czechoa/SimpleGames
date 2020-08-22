@@ -1,15 +1,12 @@
 package org.snake.controllers;
 
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.snake.WriterReaderFileScore;
 
 
 public class Main extends Application {
@@ -28,9 +25,10 @@ public class Main extends Application {
         startScene.start(stage);
     }
 
-    static Parent loadFXML(String fxml) throws IOException {
+    static FXMLLoader fxmlLoader;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
+    static Parent loadFXML(String fxml) throws IOException {
+        fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 

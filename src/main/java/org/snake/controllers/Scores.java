@@ -40,7 +40,7 @@ public class Scores implements StartScene, Initializable {
     }
 
     public void handleButtonStartClick() {
-        Main.setScene(new AppSnake());
+        Main.setScene(new Game());
     }
 
     @Override

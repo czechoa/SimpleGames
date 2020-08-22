@@ -47,7 +47,8 @@ public class Setting implements StartScene, Initializable {
 
         SnakePart.setSize((int) sliderSnakePartSize.getValue());
         Fruit.setSize((int) sliderFruitSize.getValue());
-        Main.setScene(new AppSnake((int) sliderBoardWidth.getValue(), (int) sliderBoardHeight.getValue(), (int) sliderAmountSnakeParts.getValue(),new Canvas()));
+//        Main.setScene(new AppSnake((int) sliderBoardWidth.getValue(), (int) sliderBoardHeight.getValue(), (int) sliderAmountSnakeParts.getValue());
+        Main.setScene(new Game());
 
     }
 
