@@ -24,13 +24,13 @@ public class Game implements StartScene, Initializable {
     public static Canvas canvas;
 
 
-    private int boardXSize = 500;
-    private int boardYSize = 500;
+    private static int boardXSize = 500;
+    private static int boardYSize = 500;
     private int snakeAmountPart = 10;
     boolean onlyInStart = true;
     Scene scene = null;
     Stage stage;
-    int x = 10;
+
     public Game() {
         Fruit.setDefaultSizeSize();
         SnakePart.setDefaultSizeSize();
@@ -38,14 +38,16 @@ public class Game implements StartScene, Initializable {
 
     public Game(int boardXSize, int boardYSize, int snakeAmountPart) {
 
-        this.boardXSize = boardXSize;
-        this.boardYSize = boardYSize;
+        Game.boardXSize = boardXSize;
+        Game.boardYSize = boardYSize;
         this.snakeAmountPart = snakeAmountPart;
     }
 
     @Override
     public void start(Stage stage) {
 
+        System.out.println("START " + boardXSize);
+        System.out.println("START " + boardYSize);
         try {
             scene = new Scene(Main.loadFXML("game"), boardXSize, boardYSize);
         } catch (IOException e) {
@@ -88,6 +90,9 @@ public class Game implements StartScene, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println(boardXSize);
+        System.out.println(boardYSize);
+
         canvasfxml.setWidth(boardXSize);
         canvasfxml.setHeight(boardYSize);
         canvas = canvasfxml;
