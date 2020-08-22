@@ -14,7 +14,7 @@ public class Menu implements StartScene {
     public void handleButtonClick() {
         Game game = new Game();
         Main.setScene(game);
-        game.run();
+//        new AppSnake().start();
 
     }
 

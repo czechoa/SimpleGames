@@ -49,7 +49,7 @@ public class Setting implements StartScene, Initializable {
         Fruit.setSize((int) sliderFruitSize.getValue());
         Game game = new Game((int) sliderBoardWidth.getValue(), (int) sliderBoardHeight.getValue(), (int) sliderAmountSnakeParts.getValue());
         Main.setScene(game);
-        game.run();
+//        new AppSnake((int) sliderBoardWidth.getValue(), (int) sliderBoardHeight.getValue(), (int) sliderAmountSnakeParts.getValue()).start();
     }
 
     @FXML
