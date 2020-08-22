@@ -10,7 +10,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import org.snake.game.AppSnake;
 import org.snake.game.Direction;
 import org.snake.game.Fruit;
 import org.snake.game.RunLoop;
@@ -25,56 +24,41 @@ public class Game implements StartScene, Initializable {
     public static Canvas canvas;
 
 
-    private final int boardXSize = 500;
-    private final int boardYSize = 500;
-    private final int snakeAmountPart = 10;
+    private int boardXSize = 500;
+    private int boardYSize = 500;
+    private int snakeAmountPart = 10;
     boolean onlyInStart = true;
     Scene scene = null;
     Stage stage;
     int x = 10;
-//    public Game() {
-//        Fruit.setDefaultSizeSize();
-//        SnakePart.setDefaultSizeSize();
-//    }
-//
-//    public Game(int boardXSize, int boardYSize, int snakeAmountPart) {
-//
-//        this.boardXSize = boardXSize;
-//        this.boardYSize = boardYSize;
-//        this.snakeAmountPart = snakeAmountPart;
-//    }
+    public Game() {
+        Fruit.setDefaultSizeSize();
+        SnakePart.setDefaultSizeSize();
+    }
+
+    public Game(int boardXSize, int boardYSize, int snakeAmountPart) {
+
+        this.boardXSize = boardXSize;
+        this.boardYSize = boardYSize;
+        this.snakeAmountPart = snakeAmountPart;
+    }
 
     @Override
     public void start(Stage stage) {
 
-        System.out.println("start "+ x);
         try {
-            scene = new Scene(Main.loadFXML("game"),boardXSize,boardYSize);
+            scene = new Scene(Main.loadFXML("game"), boardXSize, boardYSize);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("stop "+x);
-
         this.stage = stage;
         stage.setScene(scene);
         stage.centerOnScreen();
-        if(canvas == null){
-            System.out.println("null in run");
-        }
 
     }
 
     void run() {
-
-//        System.out.println(x);
-        Fruit.setDefaultSizeSize();
-        SnakePart.setDefaultSizeSize();
         Snake snake = new Snake(boardXSize, boardYSize, snakeAmountPart);
-        if(canvas == null){
-            System.out.println("null in run");
-            System.out.println(canvas.getHeight());
-            System.out.println(canvas.getWidth());
-        }
         RunLoop runLoop = new RunLoop(canvas, snake);
 
         scene.addEventFilter(KeyEvent.KEY_PRESSED, key -> {
@@ -104,12 +88,6 @@ public class Game implements StartScene, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("tralal");
-        if (canvasfxml == null) {
-            System.out.println("null");
-        }
-        x =20;
-        System.out.println(x);
         canvasfxml.setWidth(boardXSize);
         canvasfxml.setHeight(boardYSize);
         canvas = canvasfxml;
