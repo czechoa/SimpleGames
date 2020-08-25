@@ -29,7 +29,8 @@ public class AppSnake {
     }
 
     public AppSnake(int boardXSize, int boardYSize, int snakeAmountPart) {
-
+        Fruit.setDefaultSizeSize();
+        SnakePart.setDefaultSizeSize();
         this.boardXSize = boardXSize;
         this.boardYSize = boardYSize;
         this.snakeAmountPart = snakeAmountPart;
