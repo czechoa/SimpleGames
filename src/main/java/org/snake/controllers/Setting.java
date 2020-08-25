@@ -6,11 +6,9 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
-import org.snake.game.AppSnake;
 import org.snake.game.Fruit;
 import org.snake.game.SnakePart;
 
@@ -45,17 +43,22 @@ public class Setting implements StartScene, Initializable {
     @FXML
     public void handleButtonStartClick() {
 
-        SnakePart.setSize((int) sliderSnakePartSize.getValue());
-        Fruit.setSize((int) sliderFruitSize.getValue());
-        Game game = new Game((int) sliderBoardWidth.getValue(), (int) sliderBoardHeight.getValue(), (int) sliderAmountSnakeParts.getValue());
+        setValueGame();
+        Game game = new Game();
         Main.setScene(game);
-//        new AppSnake((int) sliderBoardWidth.getValue(), (int) sliderBoardHeight.getValue(), (int) sliderAmountSnakeParts.getValue()).start();
     }
 
     @FXML
     public void handleButtonMenuClick() {
+        setValueGame();
         Main.setScene(new Menu());
-
+    }
+    private void setValueGame(){
+        SnakePart.setSize((int) sliderSnakePartSize.getValue());
+        Fruit.setSize((int) sliderFruitSize.getValue());
+        Game.setBoardXSize((int) sliderBoardWidth.getValue());
+        Game.setBoardYSize((int) sliderBoardHeight.getValue());
+        Game.setSnakeAmountPart((int) sliderAmountSnakeParts.getValue());
     }
 
     @Override

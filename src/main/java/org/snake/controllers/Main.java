@@ -25,6 +25,7 @@ public class Main extends Application {
         startScene.start(stage);
     }
 
+
     static FXMLLoader fxmlLoader;
 
     static Parent loadFXML(String fxml) throws IOException {

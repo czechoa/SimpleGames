@@ -7,15 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.snake.game.AppSnake;
-import org.snake.game.Direction;
-import org.snake.game.Fruit;
-import org.snake.game.RunLoop;
-import org.snake.game.Snake;
-import org.snake.game.SnakePart;
 
 public class Game implements StartScene, Initializable {
 
@@ -27,10 +20,7 @@ public class Game implements StartScene, Initializable {
 
     private static int boardXSize = 500;
     private static int boardYSize = 500;
-    private int snakeAmountPart = 10;
-    boolean onlyInStart = true;
-    Scene scene = null;
-    Stage stage;
+    private static int snakeAmountPart = 10;
 
     public Game() {
 
@@ -47,15 +37,15 @@ public class Game implements StartScene, Initializable {
     public void start(Stage stage) {
         System.out.println("START " + boardXSize);
         System.out.println("START " + boardYSize);
+        Scene scene = null;
         try {
             scene = new Scene(Main.loadFXML("game"), boardXSize, boardYSize);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        this.stage = stage;
         stage.setScene(scene);
         stage.centerOnScreen();
-        new AppSnake(boardXSize,boardYSize,snakeAmountPart,scene,canvas);
+        new AppSnake(boardXSize, boardYSize, snakeAmountPart, scene, canvas);
 
     }
 
@@ -67,5 +57,17 @@ public class Game implements StartScene, Initializable {
         canvasfxml.setWidth(boardXSize);
         canvasfxml.setHeight(boardYSize);
         canvas = canvasfxml;
+    }
+
+    public static void setBoardXSize(int boardXSize) {
+        Game.boardXSize = boardXSize;
+    }
+
+    public static void setBoardYSize(int boardYSize) {
+        Game.boardYSize = boardYSize;
+    }
+
+    public static void setSnakeAmountPart(int snakeAmountPart) {
+        Game.snakeAmountPart = snakeAmountPart;
     }
 }
