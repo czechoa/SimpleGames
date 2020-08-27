@@ -1,11 +1,9 @@
 package org.snake.controllers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
@@ -34,14 +32,15 @@ public class Setting implements StartScene, Initializable {
 
     @Override
     public void start(Stage stage) {
-        Scene scene = null;
-        try {
-            scene = new Scene(Main.loadFXML("setting"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setScene(scene);
-        stage.centerOnScreen();
+        Main.loadScene("setting");
+//        Scene scene = null;
+//        try {
+//            scene = new Scene(Main.loadFXML("setting"));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        stage.setScene(scene);
+//        stage.centerOnScreen();
 
     }
 

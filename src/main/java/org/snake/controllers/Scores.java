@@ -25,14 +25,15 @@ public class Scores implements StartScene, Initializable {
 
     @Override
     public void start(Stage stage) {
-        Scene scene = null;
-        try {
-            scene = new Scene(Main.loadFXML("scores"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setScene(scene);
-        stage.centerOnScreen();
+        Main.loadScene("scores");
+//        Scene scene = null;
+//        try {
+//            scene = new Scene(Main.loadFXML("scores"));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        stage.setScene(scene);
+//        stage.centerOnScreen();
     }
 
     public void handleButtonMenuClick() {

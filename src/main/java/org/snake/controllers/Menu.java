@@ -32,14 +32,15 @@ public class Menu implements StartScene {
 
     @Override
     public void start(Stage stage) {
-        Scene scene = null;
-        try {
-            scene = new Scene(Main.loadFXML("menu"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setScene(scene);
+        Main.loadScene("menu");
+//        cene scene = null;
+//        try {
+//            scene = new Scene(Main.loadFXML("menu"));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        stage.setScene(scene);
         stage.show();
-        stage.centerOnScreen();
+//        stage.centerOnScreen();
     }
 }
