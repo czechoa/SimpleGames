@@ -25,18 +25,16 @@ public class Game implements StartScene, Initializable {
     public Game() {
 
     }
-
-    public Game(int boardXSize, int boardYSize, int snakeAmountPart) {
-
-        Game.boardXSize = boardXSize;
-        Game.boardYSize = boardYSize;
-        this.snakeAmountPart = snakeAmountPart;
-    }
+//
+//    public Game(int boardXSize, int boardYSize, int snakeAmountPart) {
+//
+//        Game.boardXSize = boardXSize;
+//        Game.boardYSize = boardYSize;
+//        this.snakeAmountPart = snakeAmountPart;
+//    }
 
     @Override
     public void start(Stage stage) {
-        System.out.println("START " + boardXSize);
-        System.out.println("START " + boardYSize);
         Scene scene = null;
         try {
             scene = new Scene(Main.loadFXML("game"), boardXSize, boardYSize);
@@ -51,9 +49,6 @@ public class Game implements StartScene, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println(boardXSize);
-        System.out.println(boardYSize);
-
         canvasfxml.setWidth(boardXSize);
         canvasfxml.setHeight(boardYSize);
         canvas = canvasfxml;
