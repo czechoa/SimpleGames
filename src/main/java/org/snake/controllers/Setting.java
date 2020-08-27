@@ -81,6 +81,5 @@ public class Setting implements StartScene, Initializable {
         label.setText(String.format("%d", startValue));
         slider.setValue(startValue);
         slider.valueProperty().addListener((ov, old_val, new_val) -> label.setText(String.format("%d", new_val.intValue())));
-
     }
 }

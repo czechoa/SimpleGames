@@ -25,13 +25,6 @@ public class Game implements StartScene, Initializable {
     public Game() {
 
     }
-//
-//    public Game(int boardXSize, int boardYSize, int snakeAmountPart) {
-//
-//        Game.boardXSize = boardXSize;
-//        Game.boardYSize = boardYSize;
-//        this.snakeAmountPart = snakeAmountPart;
-//    }
 
     @Override
     public void start(Stage stage) {

@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -27,6 +28,18 @@ public class Main extends Application {
 
 
     static FXMLLoader fxmlLoader;
+
+    static Scene loadScene(String nameFxml){
+        Scene scene = null;
+        try {
+            scene = new Scene(Main.loadFXML(nameFxml));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        return scene;
+    }
 
     static Parent loadFXML(String fxml) throws IOException {
         fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
