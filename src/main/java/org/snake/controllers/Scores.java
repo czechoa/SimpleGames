@@ -38,7 +38,6 @@ public class Scores implements StartScene, Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         result.setCellValueFactory(new PropertyValueFactory<>("score"));
         data.setCellValueFactory(new PropertyValueFactory<>("data"));
-
         table.setItems(WriterReaderFileScore.read());
         table.setEditable(false);
     }
