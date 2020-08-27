@@ -33,14 +33,6 @@ public class Setting implements StartScene, Initializable {
     @Override
     public void start(Stage stage) {
         Main.loadScene("setting");
-//        Scene scene = null;
-//        try {
-//            scene = new Scene(Main.loadFXML("setting"));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        stage.setScene(scene);
-//        stage.centerOnScreen();
 
     }
 

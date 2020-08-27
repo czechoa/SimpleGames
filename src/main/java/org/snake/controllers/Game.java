@@ -13,7 +13,7 @@ import org.snake.game.AppSnake;
 public class Game implements StartScene, Initializable {
 
     @FXML
-    public Canvas canvasfxml;
+    public Canvas canvasFxml;
 
     public static Canvas canvas;
 
@@ -42,9 +42,9 @@ public class Game implements StartScene, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        canvasfxml.setWidth(boardXSize);
-        canvasfxml.setHeight(boardYSize);
-        canvas = canvasfxml;
+        canvasFxml.setWidth(boardXSize);
+        canvasFxml.setHeight(boardYSize);
+        canvas = canvasFxml;
     }
 
     public static void setBoardXSize(int boardXSize) {

@@ -26,10 +26,7 @@ public class Main extends Application {
         startScene.start(stage);
     }
 
-
-    static FXMLLoader fxmlLoader;
-
-    static Scene loadScene(String nameFxml){
+    static void loadScene(String nameFxml){
         Scene scene = null;
         try {
             scene = new Scene(Main.loadFXML(nameFxml));
@@ -38,11 +35,10 @@ public class Main extends Application {
         }
         stage.setScene(scene);
         stage.centerOnScreen();
-        return scene;
     }
 
     static Parent loadFXML(String fxml) throws IOException {
-        fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
+        var fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
