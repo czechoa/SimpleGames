@@ -1,5 +1,6 @@
 /home/andrzej/IdeaProjects/TestProjektWithCss/SimpleGame/src/main/java/org/snake/game/Direction.java
 /home/andrzej/IdeaProjects/TestProjektWithCss/SimpleGame/src/main/java/org/snake/SuperMain.java
+/home/andrzej/IdeaProjects/TestProjektWithCss/SimpleGame/src/main/java/org/snake/controllers/Game.java
 /home/andrzej/IdeaProjects/TestProjektWithCss/SimpleGame/src/main/java/org/snake/game/Fruit.java
 /home/andrzej/IdeaProjects/TestProjektWithCss/SimpleGame/src/main/java/org/snake/game/AppSnake.java
 /home/andrzej/IdeaProjects/TestProjektWithCss/SimpleGame/src/main/java/org/snake/WriterReaderFileScore.java
