@@ -17,7 +17,7 @@ public class Snake {
     private int moveY;
     private boolean alive = true;
 
-    Snake(int boardWidth, int boardHeight, int amountSnakePartInStart) {
+    public Snake(int boardWidth, int boardHeight, int amountSnakePartInStart) {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.snakePartSize = SnakePart.getSnakePartSize();

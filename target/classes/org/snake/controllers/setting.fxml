@@ -9,103 +9,100 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="372.0" prefWidth="600.0" spacing="50.0" xmlns="http://javafx.com/javafx/11.0.1"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.snake.controllers.Setting">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="600.0" spacing="50.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.snake.controllers.Setting">
    <padding>
-      <Insets top="10.0"/>
+      <Insets top="10.0" />
    </padding>
    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
       <padding>
-         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
       </padding>
       <Label prefHeight="16.0" prefWidth="150.0" text="Board Witdh">
          <padding>
-            <Insets left="5.0" right="5.0"/>
+            <Insets left="5.0" right="5.0" />
          </padding>
       </Label>
       <Slider fx:id="sliderBoardWidth" max="1250.0" min="300.0" value="500.0">
          <opaqueInsets>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </opaqueInsets>
       </Slider>
-      <Label fx:id="labelBoardWidth" text="Label"/>
-      <Region prefHeight="26.0" prefWidth="67.0"/>
+      <Label fx:id="labelBoardWidth" prefWidth="35.0" text="1000" />
+      <Region prefHeight="26.0" prefWidth="67.0" />
       <Button mnemonicParsing="false" onAction="#handleButtonStartClick" text="Play" textFill="#5e0b0b">
          <font>
-            <Font name="DejaVu Sans Mono Bold" size="13.0"/>
+            <Font name="DejaVu Sans Mono Bold" size="13.0" />
          </font>
       </Button>
    </HBox>
    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
       <padding>
-         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
       </padding>
       <Label prefHeight="16.0" prefWidth="150.0" text="Board Height">
          <padding>
-            <Insets left="5.0" right="5.0"/>
+            <Insets left="5.0" right="5.0" />
          </padding>
       </Label>
       <Slider fx:id="sliderBoardHeight" max="800.0" min="300.0" value="500.0">
          <opaqueInsets>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </opaqueInsets>
       </Slider>
-      <Label fx:id="labelBoardHeight" text="Label"/>
-      <Region prefHeight="26.0" prefWidth="67.0"/>
-      <Button mnemonicParsing="false" onAction="#handleButtonMenuClick" text="Menu" textFill="#282626"
-              textOverrun="WORD_ELLIPSIS">
+      <Label fx:id="labelBoardHeight" prefWidth="35.0" text="Label" />
+      <Region prefHeight="26.0" prefWidth="67.0" />
+      <Button mnemonicParsing="false" onAction="#handleButtonMenuClick" text="Menu" textFill="#282626" textOverrun="WORD_ELLIPSIS">
          <font>
-            <Font name="DejaVu Sans Mono Bold" size="13.0"/>
+            <Font name="DejaVu Sans Mono Bold" size="13.0" />
          </font>
       </Button>
    </HBox>
    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
       <padding>
-         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
       </padding>
       <Label prefHeight="16.0" prefWidth="150.0" text="Amount Snake Parts">
          <padding>
-            <Insets left="5.0" right="2.0"/>
+            <Insets left="5.0" right="2.0" />
          </padding>
       </Label>
       <Slider fx:id="sliderAmountSnakeParts" max="15.0" min="1.0" value="10.0">
          <opaqueInsets>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </opaqueInsets>
       </Slider>
-      <Label fx:id="labelAmountSnakeParts" text="Label"/>
+      <Label fx:id="labelAmountSnakeParts" text="Label" />
    </HBox>
    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
       <padding>
-         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
       </padding>
       <Label prefHeight="16.0" prefWidth="150.0" text="Size Snake Part">
          <padding>
-            <Insets left="5.0" right="5.0"/>
+            <Insets left="5.0" right="5.0" />
          </padding>
       </Label>
       <Slider fx:id="sliderSnakePartSize" max="75.0" min="10.0" value="50.0">
          <opaqueInsets>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </opaqueInsets>
       </Slider>
-      <Label fx:id="labelSnakePartSize" text="Label"/>
+      <Label fx:id="labelSnakePartSize" text="Label" />
    </HBox>
    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
       <padding>
-         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
       </padding>
       <Label prefHeight="16.0" prefWidth="150.0" text="Fruit Size">
          <padding>
-            <Insets left="5.0" right="5.0"/>
+            <Insets left="5.0" right="5.0" />
          </padding>
       </Label>
       <Slider fx:id="sliderFruitSize" min="5.0" value="10.0">
          <opaqueInsets>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </opaqueInsets>
       </Slider>
-      <Label fx:id="labelFruitSize" text="Label"/>
+      <Label fx:id="labelFruitSize" text="Label" />
    </HBox>
 </VBox>

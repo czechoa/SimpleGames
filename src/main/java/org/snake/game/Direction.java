@@ -1,6 +1,6 @@
 package org.snake.game;
 
-enum Direction {
+public enum Direction {
     UP,
     RIGHT,
     DOWN,
