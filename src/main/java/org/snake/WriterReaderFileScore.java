@@ -1,14 +1,17 @@
 package org.snake;
 
-import java.io.*;
-import java.net.URL;
-import java.util.Objects;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public interface WriterReaderFileScore {
 
     String fileName = "result";
+
     static void write(String string) {
         try {
             File file = new File(fileName);
@@ -25,7 +28,7 @@ public interface WriterReaderFileScore {
         ObservableList<Score> list = FXCollections.observableArrayList();
         try {
             BufferedReader bw = new BufferedReader(new FileReader(fileName));
-           String oneLine;
+            String oneLine;
             while ((oneLine = bw.readLine()) != null) {
                 String[] w = oneLine.split("\\s+");
                 try {
